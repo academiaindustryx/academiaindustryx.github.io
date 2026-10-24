@@ -1,633 +1,989 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Academia Industry X</title>
-    <meta name="description" content="Welcome to the Academia Industry X (AIX) Foundation!">
-    <meta name="keywords" content="Academia,Industry,X,AIX,Foundation">
-    <meta name="author" content="AIX Founders">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AIX · Academia-Industry X</title>
+  <meta name="description" content="Academia-Industry X (AIX) connects AI researchers in academia and industry through workshop sponsorships, student awards, speaker dinners and research meetups.">
+  <meta name="keywords" content="AIX, Academia-Industry X, AI, workshop, sponsorship, meetup, Caltech, UCLA, USC, CVPR, NeurIPS">
+  <meta name="author" content="AIX Founders">
+  <meta property="og:title" content="AIX · Academia-Industry X">
+  <meta property="og:description" content="Connecting academia and industry to advance AI.">
+  <meta property="og:image" content="static/photos/hero-audience.jpg">
+  <link rel="icon" href="static/aix/aix-256.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1c2080;
+      --navy-deep: #0d1150;
+      --ink: #121633;
+      --sky: #4a9fe0;
+      --sky-soft: #e8f2fc;
+      --text: #2b3048;
+      --muted: #5f6680;
+      --line: #e3e6ef;
+      --bg: #ffffff;
+      --bg-alt: #f5f7fb;
+      --radius: 14px;
+      --shadow: 0 1px 2px rgba(18,22,51,.06), 0 8px 24px rgba(18,22,51,.07);
+      --shadow-lg: 0 2px 4px rgba(18,22,51,.06), 0 20px 48px rgba(18,22,51,.14);
+      --display: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+      --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --wrap: 1160px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+    body { margin: 0; font-family: var(--body); font-size: 16px; line-height: 1.65; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; }
+    a { color: var(--navy); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a:hover { color: var(--sky); }
+    h1, h2, h3, h4 { font-family: var(--display); color: var(--ink); line-height: 1.2; margin: 0; letter-spacing: -0.01em; }
+    .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
+    section { padding: 96px 0; }
+    .alt { background: var(--bg-alt); }
+    .eyebrow { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--sky); margin-bottom: 14px; }
+    .section-head { max-width: 720px; margin-bottom: 48px; }
+    .section-head h2 { font-size: clamp(28px, 4vw, 40px); margin-bottom: 16px; }
+    .section-head p { color: var(--muted); font-size: 18px; margin: 0; }
 
-    <link rel="icon" href="static/aix/aix.png">
+    /* Nav */
+    .nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.86); backdrop-filter: saturate(180%) blur(14px); -webkit-backdrop-filter: saturate(180%) blur(14px); border-bottom: 1px solid transparent; transition: border-color .2s; }
+    .nav.scrolled { border-bottom-color: var(--line); }
+    .nav .wrap { display: flex; align-items: center; height: 68px; gap: 32px; }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font-family: var(--display); font-weight: 800; font-size: 20px; }
+    .brand img { width: 34px; height: 34px; }
+    .brand small { font-family: var(--body); font-weight: 500; font-size: 13px; color: var(--muted); border-left: 1px solid var(--line); padding-left: 10px; }
+    .nav-links { display: flex; gap: 28px; margin-left: auto; list-style: none; padding: 0; margin-top: 0; margin-bottom: 0; }
+    .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; font-size: 15px; }
+    .nav-links a:hover, .nav-links a.active { color: var(--navy); }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 15px; text-decoration: none; transition: transform .15s, background .15s, box-shadow .15s; border: 1px solid transparent; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--navy); color: #fff; box-shadow: 0 6px 18px rgba(28,32,128,.28); }
+    .btn-primary:hover { background: var(--navy-deep); color: #fff; }
+    .btn-light { background: #fff; color: var(--navy); }
+    .btn-light:hover { color: var(--navy-deep); }
+    .btn-ghost { color: #fff; border-color: rgba(255,255,255,.45); }
+    .btn-ghost:hover { color: #fff; background: rgba(255,255,255,.1); }
+    .nav .btn { padding: 9px 18px; font-size: 14px; }
+    .menu-btn { display: none; margin-left: auto; background: none; border: 0; width: 40px; height: 40px; cursor: pointer; }
+    .menu-btn span { display: block; width: 22px; height: 2px; background: var(--ink); margin: 5px auto; border-radius: 2px; transition: .2s; }
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/fonts.css">
-    <link rel="stylesheet" href="css/custom.css">
+    /* Hero */
+    .hero { position: relative; color: #fff; padding: 120px 0 150px; background: var(--navy-deep) url("static/photos/hero-audience.jpg") center/cover no-repeat; overflow: hidden; }
+    .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, rgba(10,13,64,.95) 0%, rgba(20,26,110,.82) 45%, rgba(28,60,140,.45) 100%); }
+    .hero .wrap { position: relative; }
+    .hero .eyebrow { color: #9fcdf5; }
+    .hero h1 { color: #fff; font-size: clamp(36px, 6vw, 64px); font-weight: 800; max-width: 820px; letter-spacing: -0.02em; }
+    .hero h1 em { font-style: normal; color: #8cc6f7; }
+    .hero p.lead { font-size: clamp(17px, 2vw, 20px); max-width: 640px; color: rgba(255,255,255,.86); margin: 24px 0 36px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+
+    .stats { position: relative; z-index: 2; margin-top: -72px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-lg); overflow: hidden; }
+    .stat { padding: 28px 28px; border-right: 1px solid var(--line); }
+    .stat:last-child { border-right: 0; }
+    .stat b { display: block; font-family: var(--display); font-size: 36px; font-weight: 800; color: var(--navy); line-height: 1.1; }
+    .stat span { color: var(--muted); font-size: 14px; }
+
+    .partners { padding: 56px 0 0; text-align: center; }
+    .partners p { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin: 0 0 18px; }
+    .partner-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 28px 56px; }
+    .partner-row a { display: flex; align-items: center; height: 48px; text-decoration: none; opacity: .85; transition: opacity .2s, transform .2s; }
+    .partner-row a:hover { opacity: 1; transform: translateY(-2px); }
+    .partner-row img { height: 100%; width: auto; max-width: 170px; object-fit: contain; }
+    .partner-row .h-cvpr { height: 38px; max-width: 200px; }
+    .nips { display: flex; align-items: center; gap: 8px; height: 100%; }
+    .nips img { height: 38px; }
+    .nips span { font-family: var(--display); font-weight: 700; font-size: 26px; color: #5b3a85; letter-spacing: -0.01em; }
+    .partner-row .h-caltech { height: 30px; }
+    .partner-row .h-ucla { height: 34px; }
+    .wordmark { font-family: var(--display); font-weight: 800; font-size: 24px; line-height: 1; letter-spacing: -0.01em; text-align: left; }
+    .wordmark small { display: block; font-family: var(--body); font-size: 10px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; margin-top: 4px; opacity: .75; }
+    .wm-texas { color: #bf5700; }
+    .wm-socal { color: #1a7f9c; }
+    .partner-sep { width: 1px; height: 36px; background: var(--line); }
+    @media (max-width: 640px) { .partner-row { gap: 22px 32px; } .partner-sep { display: none; } .partner-row a { height: 36px; } }
+
+    /* What we do */
+    .pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+    .pillar { background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s; display: flex; flex-direction: column; }
+    .pillar:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .pillar img { aspect-ratio: 4/3; object-fit: cover; width: 100%; }
+    .pillar div { padding: 22px 22px 26px; }
+    .pillar h3 { font-size: 19px; margin-bottom: 8px; }
+    .pillar p { margin: 0; color: var(--muted); font-size: 15px; }
+
+    /* Featured researchers */
+    .featured { background: linear-gradient(180deg, #0b0e45 0%, #141a6e 100%); color: #fff; position: relative; overflow: hidden; }
+    .featured::before { content: ""; position: absolute; width: 720px; height: 720px; right: -260px; top: -320px; border-radius: 50%; background: radial-gradient(circle, rgba(74,159,224,.28), transparent 65%); }
+    .featured .wrap { position: relative; }
+    .featured .section-head h2 { color: #fff; }
+    .featured .section-head p { color: rgba(255,255,255,.75); }
+    .featured .eyebrow { color: #8cc6f7; }
+    .luminaries { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+    .lum { flex: 0 0 calc((100% - 80px) / 5); }
+    .lum { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius); padding: 24px 16px 20px; text-align: center; transition: background .2s, transform .2s; }
+    .lum:hover { background: rgba(255,255,255,.1); transform: translateY(-4px); }
+    .lum img { width: 104px; height: 104px; border-radius: 50%; object-fit: cover; margin: 0 auto 14px; box-shadow: 0 0 0 3px rgba(140,198,247,.55); }
+    .lum strong { display: block; font-family: var(--display); font-size: 17px; }
+    .lum .org { display: block; font-size: 13px; color: rgba(255,255,255,.7); margin: 2px 0 12px; }
+    .lum ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+    .lum li { font-size: 12px; line-height: 1.35; padding: 5px 8px; border-radius: 8px; background: rgba(140,198,247,.14); color: #cfe6fb; }
+    .lum li b { font-weight: 600; color: #fff; display: block; }
+    .featured-note { margin: 28px 0 0; font-size: 13px; color: rgba(255,255,255,.55); }
+    .people { font-size: 14px; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 14px; margin: 0 0 16px; }
+    .people b { color: var(--ink); font-weight: 600; }
+    @media (max-width: 1080px) { .lum { flex-basis: calc((100% - 40px) / 3); } }
+    @media (max-width: 640px) { .luminaries { gap: 12px; } .lum { flex-basis: calc((100% - 12px) / 2); } .lum img { width: 80px; height: 80px; } .lum { padding: 18px 10px 14px; } }
+
+    /* Activities */
+    .events { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .event { --c1: #1c2080; --c2: #3a63c9; --glow: rgba(120,170,255,.55); --accent: #9fd0ff;
+      position: relative; isolation: isolate; overflow: hidden; border-radius: 22px; padding: 30px 30px 26px; color: #fff;
+      background: linear-gradient(140deg, var(--c1) 0%, var(--c2) 100%); display: flex; flex-direction: column; min-height: 380px;
+      box-shadow: 0 18px 40px -18px rgba(13,17,80,.55); transition: transform .3s ease, box-shadow .3s ease; }
+    .event::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: .5;
+      background-image: linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px);
+      background-size: 28px 28px; -webkit-mask-image: radial-gradient(ellipse at 80% 0%, #000 10%, transparent 70%); mask-image: radial-gradient(ellipse at 80% 0%, #000 10%, transparent 70%); }
+    .event::after { content: ""; position: absolute; z-index: -1; width: 380px; height: 380px; right: -140px; top: -160px; border-radius: 50%;
+      background: radial-gradient(circle, var(--glow), transparent 65%); transition: transform .5s ease; }
+    .event:hover { transform: translateY(-6px); box-shadow: 0 28px 56px -20px rgba(13,17,80,.7); }
+    .event:hover::after { transform: scale(1.25) translate(-20px, 20px); }
+    .event.wide { grid-column: span 2; }
+    .ev-year { position: absolute; right: 18px; bottom: -28px; z-index: -1; font-family: var(--display); font-weight: 800; font-size: 150px; line-height: 1; color: rgba(255,255,255,.06); letter-spacing: -0.04em; pointer-events: none; }
+    .ev-top { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
+    .chip { font-size: 12.5px; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.18); backdrop-filter: blur(6px); white-space: nowrap; }
+    .chip.role { background: rgba(255,255,255,.92); color: var(--c1); border-color: transparent; }
+    .ev-title { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 3.4vw, 44px); line-height: 1.02; letter-spacing: -0.02em; color: #fff; margin: 0 0 10px; }
+    .ev-title span { display: inline-block; background: linear-gradient(90deg, #fff, var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .event.wide .ev-title { font-size: clamp(34px, 4.6vw, 60px); }
+    .event:not(.wide) .ev-title { font-size: clamp(30px, 3vw, 38px); }
+    .event:not(.wide) .ev-title span { display: block; }
+    .ev-full { font-size: 15px; color: rgba(255,255,255,.78); margin: 0 0 24px; max-width: 520px; }
+    .ev-people { margin-top: auto; }
+    .avatars { display: flex; margin-bottom: 12px; }
+    .avatars img, .avatars .ini { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,255,255,.9); margin-left: -10px; background: #fff; transition: transform .2s; }
+    .avatars img:first-child { margin-left: 0; }
+    .avatars img:hover { transform: translateY(-4px) scale(1.08); z-index: 2; }
+    .avatars .ini { display: grid; place-items: center; font-size: 13px; font-weight: 700; color: var(--c1); }
+    .ev-group { font-size: 13.5px; line-height: 1.5; color: rgba(255,255,255,.82); margin: 0 0 4px; }
+    .ev-group b { color: var(--accent); font-weight: 600; margin-right: 4px; }
+    .ev-foot { display: flex; justify-content: flex-end; margin-top: 18px; }
+    .ev-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14px; color: #fff; text-decoration: none; padding: 9px 16px; border-radius: 999px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22); transition: background .2s, gap .2s; }
+    .ev-link:hover { background: rgba(255,255,255,.22); color: #fff; gap: 12px; }
+    .ev-cvpr { --c1: #141a6e; --c2: #2f62c8; --glow: rgba(110,190,255,.6); --accent: #a9dcff; }
+    .ev-neurips { --c1: #1a0f3d; --c2: #6a42b0; --glow: rgba(200,150,255,.5); --accent: #dcc4ff; }
+    .ev-texas { --c1: #3b140a; --c2: #c25a0a; --glow: rgba(255,190,110,.5); --accent: #ffd6a3; }
+    .ev-socal { --c1: #062f45; --c2: #138aa8; --glow: rgba(110,235,240,.45); --accent: #b4f3f5; }
+    @media (max-width: 960px) { .events { grid-template-columns: 1fr 1fr; } .event.wide { grid-column: span 2; } }
+    @media (max-width: 640px) { .events { grid-template-columns: 1fr; } .event.wide { grid-column: auto; } .event.wide .ev-title { font-size: 36px; } .event { min-height: 0; padding: 24px 22px 22px; } .ev-year { font-size: 110px; } }
+
+    /* Meetups */
+    .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 64px; }
+    .gallery figure { margin: 0; position: relative; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    .gallery img { width: 100%; aspect-ratio: 4/3; object-fit: cover; transition: transform .5s; }
+    .gallery figure:hover img { transform: scale(1.03); }
+    .gallery figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 48px 22px 18px; color: #fff; font-weight: 500; background: linear-gradient(transparent, rgba(8,10,40,.82)); }
+    .gallery figcaption b { display: block; font-family: var(--display); font-size: 18px; }
+    .year-head { display: flex; align-items: baseline; gap: 14px; margin: 40px 0 16px; }
+    .year-head h3 { font-size: 28px; }
+    .year-head span { color: var(--muted); font-size: 15px; }
+    .talks { display: grid; gap: 12px; }
+    .talk { background: #fff; border: 1px solid var(--line); border-radius: 12px; transition: box-shadow .2s, border-color .2s; }
+    .talk:hover { border-color: #cfd5e5; }
+    .talk[open] { box-shadow: var(--shadow); border-color: #cfd5e5; }
+    .talk summary { list-style: none; display: grid; grid-template-columns: 64px 48px 1fr 24px; gap: 18px; align-items: center; padding: 16px 22px; cursor: pointer; }
+    .talk summary::-webkit-details-marker { display: none; }
+    .talk-date { text-align: center; border-right: 1px solid var(--line); padding-right: 14px; line-height: 1.1; }
+    .talk-date span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600; }
+    .talk-date b { font-family: var(--display); font-size: 24px; color: var(--navy); }
+    .talk-avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; background: var(--bg-alt); }
+    .talk-main h4 { font-size: 17px; font-weight: 700; margin-bottom: 2px; }
+    .talk-main p { margin: 0; font-size: 14px; color: var(--muted); }
+    .dot { margin: 0 4px; }
+    .aff { font-style: normal; font-weight: 600; }
+    .aff-caltech { color: #d2541c; }
+    .aff-ucla { color: #2774ae; }
+    .aff-usc { color: #990000; }
+    .aff-stanford { color: #8c1515; }
+    .aff-ncsu { color: #cc0000; }
+    .talk-toggle { width: 24px; height: 24px; border-radius: 50%; background: var(--bg-alt); position: relative; transition: transform .2s; }
+    .talk-toggle::before, .talk-toggle::after { content: ""; position: absolute; left: 7px; right: 7px; top: 11px; height: 2px; background: var(--navy); border-radius: 2px; }
+    .talk-toggle::after { transform: rotate(90deg); transition: transform .2s; }
+    .talk[open] .talk-toggle::after { transform: rotate(0); }
+    .talk-body { padding: 4px 22px 26px 22px; margin-left: 82px; max-width: 860px; }
+    .talk-body h5 { font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--sky); margin: 20px 0 6px; font-weight: 600; }
+    .talk-body p { margin: 0; font-size: 15px; }
+    .talk-speaker { display: flex; gap: 14px; align-items: center; padding: 14px; background: var(--bg-alt); border-radius: 10px; }
+    .talk-speaker img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; }
+    .talk-speaker div { display: flex; flex-direction: column; font-size: 14px; color: var(--muted); line-height: 1.45; }
+    .talk-speaker strong { color: var(--ink); font-size: 16px; }
+    .talk-speaker .now { color: var(--navy); font-weight: 600; }
+
+    /* Speakers */
+    .speakers { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 22px; }
+    .speaker { text-align: center; text-decoration: none; color: var(--text); background: #fff; border-radius: var(--radius); padding: 26px 16px 22px; box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s; display: flex; flex-direction: column; align-items: center; }
+    .speaker:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); color: var(--text); }
+    .speaker img { width: 108px; height: 108px; border-radius: 50%; object-fit: cover; margin-bottom: 14px; box-shadow: 0 0 0 4px #fff, 0 0 0 5px var(--line); }
+    .speaker strong { font-family: var(--display); color: var(--ink); font-size: 16px; line-height: 1.3; }
+    .speaker span { font-size: 13px; color: var(--muted); margin: 4px 0 6px; }
+    .speaker em { font-size: 13px; }
+
+    /* CTA */
+    .cta { position: relative; color: #fff; background: var(--navy-deep) url("static/photos/networking.jpg") center/cover; padding: 104px 0; }
+    .cta::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,13,64,.95), rgba(28,32,128,.78)); }
+    .cta .wrap { position: relative; display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: center; }
+    .cta h2 { color: #fff; font-size: clamp(28px, 4vw, 42px); margin-bottom: 16px; }
+    .cta p { color: rgba(255,255,255,.85); font-size: 18px; margin: 0 0 28px; }
+    .cta ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+    .cta li { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); border-radius: 12px; padding: 16px 20px; backdrop-filter: blur(6px); }
+    .cta li b { display: block; font-family: var(--display); font-size: 17px; }
+    .cta li span { font-size: 14px; color: rgba(255,255,255,.75); }
+
+    footer { background: #0a0d33; color: rgba(255,255,255,.65); padding: 40px 0; font-size: 14px; }
+    footer .wrap { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; }
+    footer a { color: rgba(255,255,255,.85); }
+    footer .brand { color: #fff; font-size: 18px; }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+
+    @media (max-width: 960px) {
+      .pillars { grid-template-columns: 1fr 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stat:nth-child(2) { border-right: 0; }
+      .stat:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .cta .wrap { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 820px) {
+      .menu-btn { display: block; }
+      .nav .btn { display: none; }
+      .nav-links { position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; gap: 0; background: #fff; border-bottom: 1px solid var(--line); padding: 8px 0; display: none; }
+      .nav-links.open { display: flex; }
+      .nav-links a { display: block; padding: 12px 24px; }
+      .brand small { display: none; }
+    }
+    @media (max-width: 640px) {
+      .wrap { padding: 0 16px; }
+      section { padding: 72px 0; }
+      .hero { padding: 88px 0 130px; }
+      .pillars, .gallery { grid-template-columns: 1fr; }
+      .stat { padding: 20px; }
+      .stat b { font-size: 28px; }
+      .talk summary { grid-template-columns: 52px 1fr 24px; gap: 12px; padding: 14px 16px; }
+      .talk-avatar { display: none; }
+      .talk-date { padding-right: 10px; }
+      .talk-body { margin-left: 0; padding: 0 16px 22px; }
+      .speakers { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .speaker img { width: 84px; height: 84px; }
+    }
+  </style>
 </head>
-    
 <body>
-    <div id="header">
-        <div class="container">
-            <div id="header-desc">
-                <p style="font-size:2.2rem;text-align:center;">AIX: Academia-Industry X </p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
-            <a class="navbar-brand" href="index.html">Welcome</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#content" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
-            <div class="collapse navbar-collapse" id="content">
-                <ul class="navbar-nav mr-auto">
-		   <!--
-		    <li class="nav-item">
-                        <a class="nav-link" href="#news"><b>News</b></a>
-                    </li>
-		    -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#activities"><b>Community Activities</b></a>
-                    </li>
-					<li class="nav-item">
-                        <a class="nav-link" href="#events"><b>Meetups</b></a>
-                    </li>
-		    <li class="nav-item">
-                        <a class="nav-link" href="#speakers"><b>Speakers</b></a>
-                    </li>
-                    <!--
-                    <li class="nav-item">
-                        <a class="nav-link" href="#organizer"><b>Organizers</b></a>
-                    </li>
-                    -->
-                    <li class="nav-item">
-                        <a class="nav-link" href='#contact'><b>Contact</b></a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+  <header class="nav" id="nav">
+    <div class="wrap">
+      <a class="brand" href="#top"><img src="static/aix/aix-256.png" alt="AIX logo">AIX <small>Academia-Industry X</small></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#activities">Activities</a></li>
+        <li><a href="#meetups">Meetups</a></li>
+        <li><a href="#speakers">Speakers</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="btn btn-primary" href="mailto:mjiajing@gmail.com?subject=Partnering%20with%20AIX">Partner with us</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
-    
-    <p>
-	<img src="static/aix/aix_logo.jpg" class="img-fluid mx-auto d-block" width="250"/>
-    </p>
-    
-    <div id="welcome" class="container" align="justify">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 thumb">
-                <h4>Welcome</h4>
-                <hr>
-            </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <span class="eyebrow">Academia-Industry X · Since 2024</span>
+        <h1>Where <em>academia</em> and <em>industry</em> meet to move AI forward.</h1>
+        <p class="lead">AIX hosts AI events and supports workshops that connect researchers, students and industry practitioners — driving collaboration, open communication and the next generation of AI talent.</p>
+        <div class="hero-actions">
+          <a class="btn btn-light" href="#activities">See our activities</a>
+          <a class="btn btn-ghost" href="#meetups">Browse meetup talks</a>
         </div>
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 thumb">
-                <p> 
-		Academia-Industry X (AIX) hosts AI-related events and workshops connecting academia and industry, fostering collaboration to drive innovation, facilitate communication, and advance AI and emerging technologies.
-		</p>
-	    </div>
+      </div>
+    </section>
+
+    <div class="stats">
+      <div class="wrap">
+        <div class="stats-grid reveal">
+          <div class="stat"><b>4</b><span>Conference &amp; workshop partnerships</span></div>
+          <div class="stat"><b>15</b><span>Research talks at AIX meetups</span></div>
+          <div class="stat"><b>3</b><span>Universities: Caltech, UCLA, USC</span></div>
+          <div class="stat"><b>2024</b><span>Building community since</span></div>
         </div>
+      </div>
     </div>
 
-    <br/>
-
-   <!--
-    <div id="news" class="container" align="justify">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 thumb">
-                <h4>News</h4>
-                <hr>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 thumb">
-                <p> 
-		<b>Feb 2025</b>:    AIX (Academia-Industry X) made a donation to support the activities of the <a href="https://mlsys-ucsd.org/"><b>MLsys@UCSD</b></a> machine learning group.
-		</p>
-		<p>
-		<b>Nov 2024</b>:    AIX (Academia-Industry X) is proud to be the platinum sponsor of the <a href="https://socalnlp.github.io/symp24/index.html/"><b>SoCal NLP Symposium 2024</b></a>!
-		</p>
-            </div>
-        </div>
-    </div>
-    -->
-
-    <br/>
-    
-    <div id="activities" class="container" align="justify">
-	<div class="row">
-	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 thumb">
-	    <h4>Community Activities</h4>
-	    <hr>
-
-		<p>
-		Since 2024, AIX has partnered with conferences, workshops, and research communities to support AI through sponsorships, student awards, speaker dinners, networking events, and community-building activities. Our goal is to foster meaningful connections between academia and industry while supporting the next generation of AI researchers.
-		</p>
-			
-		<h5>June 2026</h5>
-
-		<p>
-		<b><a href="https://foundation-models-meet-embodied-agents.github.io/cvpr2026/" target="_blank">
-		Foundation Models in the Era of AI Agents (FMEA, CVPR 2026)
-		</a></b><br>
-		
-		AIX supported the workshop through challenge sponsorship, winner awards, and a speaker dinner. By recognizing excellent research and facilitating discussions among speakers and participants, AIX helped strengthen connections across the embodied AI community.
-		</p>
-		
-		<hr>
-
-		<h5>April 2026</h5>
-
-		<p>
-		<b><a href="https://texas-nlp.github.io/2026/index.html" target="_blank">
-		Texas NLP Symposium 2026
-		</a></b><br>
-		
-		AIX sponsored the symposium and organized both a speaker dinner and a community social dinner for participants. These activities provided opportunities for students, researchers, and industry professionals to connect beyond the technical program.
-		</p>
-		
-		<hr>
-
-		<h5>December 2025</h5>
-
-		<p>
-		<b><a href="https://foundation-models-meet-embodied-agents.github.io/eai_challenge/" target="_blank">
-		Embodied AI Challenge: Foundation Models Meet Embodied AI Agents (EAI, NeurIPS 2025)
-		</a></b><br>
-			
-		AIX served as the main industry sponsor of the challenge, supporting winner awards and hosting a speaker dinner. The sponsorship helped recognize outstanding research contributions while promoting collaboration between academia and industry in embodied AI.		
-		</p>
-		
-		<hr>
-
-		<h5>November 2024</h5>
-
-		<p>
-		<b><a href="https://socalnlp.github.io/symp24/index.html" target="_blank">
-		Southern California NLP Symposium (SoCal NLP 2024)
-		</a></b><br>
-			
-		AIX joined as a Platinum Sponsor to support the Southern California NLP research community. In addition to sponsorship, AIX hosted a faculty and speaker dinner, organized a lunch reception, and sponsored community social hours to encourage interactions among researchers, students, and industry practitioners.
-		</p>
-		
-		<hr>
-		
-	</div>
-	</div>
-	</div>
-		
-	<br/>
-    
-    <div id="events" class="container" align="justify">
-	<div class="row">
-	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 thumb">
-	    <h4>Meetups</h4>
-	    <hr>
-	</div>
-	</div>
-
-	<div class="row">
-	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 thumb">
-	    <h5>2025</h5>
-	    <hr>
-	</div>
-	</div>
-	    
-	<p>
-
-	    Oct 10th, 2025          <b>Zewei Zhou</b> (UCLA) <br/>
-        <b><a href="#10102025">Towards End-to-End Cooperative Automation with Multi-agent Spatio-temporal Scene Understanding</a></b><br/>
-		Oct 9th, 2025          <b>Jiachen Yao</b> (Caltech) <br/>
-        <b><a href="#10092025">Better Inverse Solver by Regularization </a></b><br/>
-		Sep 4th, 2025          <b>Defu Cao</b> (USC) <br/>
-        <b><a href="#09042025">Time Series Foundation Models </a></b><br/>
-	    May 29th, 2025          <b>Shun Ye</b> (UCLA) <br/>
-        <b><a href="#05292025">Breaking into Academic Startups and Entrepreneur Ventures </a></b><br/>
-    	May 22th, 2025          <b>Yaozhong Shi</b> (Caltech) <br/>
-    	<b><a href="#05222025">Stochastic Process Learning via Operator Flow Matching </a></b><br/>
-    	May 02th, 2025          <b>Zhiyu Huang</b> (UCLA) <br/>
-    	<b><a href="#05022025">Scalable, Learnable, and Interactive Autonomous Driving Systems </a></b><br/>
-    	April 24th, 2025        <b>Zida Wu</b> (UCLA) <br/>
-    	<b><a href="#04242025">Solving Nash Equilibrium in Large-scale Multi-agent System for Mean Field Game </a></b><br/>
-    	April 03rd, 2025        <b>Zhaoliang Zheng</b> (UCLA) <br/>
-    	<b><a href="#04032025">Safer Intersections for Connected Autonomous Drving </a></b><br/>
-    	March 13th, 2025        <b>Lizhi Yang</b> (Caltech) <br/>
-    	<b><a href="#03132025">Learning to Walk - Recent Advances in Robot Locomotion </a></b><br/>
-    	February 20th, 2025     <b> Chuwei Wang</b> (Caltech) <br/>
-    	<b><a href="#02202025">Beyond Closure Models: Learning Chaotic-Systems vis Physics-Informed Neural Operators </a></b><br/>
-    	January 23rd, 2025      <b>Hongkai Zheng</b> (Caltech) <br/>
-    	<b><a href="#01232025">Plug-and-Play Diffusion Model for Inverse Problems </a></b><br/>
-		
-	</p>
-	
-	<div class="row">
-	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 thumb">
-	    <h5>2024</h5>
-	    <hr>
-	</div>
-	</div>
-			    
-	<p>
-			
-	November 21st, 2025      <b>Sijie Ji</b> (Caltech) <br/>
-	<b><a href="#11212024">AI in Practice: Creating Accessible Healthcare via Ubiquitous Computing </a></b><br/>	
-	October 31th, 2025      <b>Sze Chai (Mickey) Leung</b> (Caltech) <br/>
-	<b><a href="#10312024">Data driven methods for flow control, sensing and turbulence modeling </a></b><br/>
-	October 17th, 2025      <b>Haowen Zhou</b> (Caltech) <br/>
-	<b><a href="#10172024">Computational Microscopy -- algorithms driving better microscopes </a></b><br/>
-	October 03rd, 2025      <b>Jiachen Yao</b> (Caltech) <br/>
-	<b><a href="#10032024">Towards Physics-Inspired Machine Learning </a></b><br/>
-
-	</p>
-		
-	<div class="row">
-	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 thumb">
-	    <p>
-		<img fetchpriority="high" decoding="async" width="800" height="600" src="static/caltech/OCT2024.PNG"></a><figcaption class="wp-element-caption">First AIX lunch meetup @ Caltech, Oct 2024.</figcaption>    
-		<br/>
-		<img fetchpriority="high" decoding="async" width="800" height="600" src="static/ucla/MAY2025.PNG"></a><figcaption class="wp-element-caption">AIX lunch meetup @ UCLA, May 2025.</figcaption>    
-		<br/>
-	    </p>
-	</div>
-	</div>
+    <div class="partners wrap reveal">
+      <p>Workshops &amp; communities we've supported</p>
+      <div class="partner-row">
+        <a href="https://foundation-models-meet-embodied-agents.github.io/cvpr2026/" target="_blank" rel="noopener" title="CVPR 2026"><img class="h-cvpr" src="static/logos/cvpr2026.png" alt="CVPR 2026"></a>
+        <a href="https://foundation-models-meet-embodied-agents.github.io/eai_challenge/" target="_blank" rel="noopener" title="NeurIPS 2025"><span class="nips"><img src="static/logos/neurips-navbar.svg" alt=""><span>NeurIPS</span></span></a>
+        <a href="https://texas-nlp.github.io/2026/index.html" target="_blank" rel="noopener" title="Texas NLP Symposium 2026"><span class="wordmark wm-texas">Texas NLP<small>Symposium</small></span></a>
+        <a href="https://socalnlp.github.io/symp24/index.html" target="_blank" rel="noopener" title="SoCal NLP Symposium 2024"><span class="wordmark wm-socal">SoCal NLP<small>Symposium</small></span></a>
+        <span class="partner-sep" aria-hidden="true"></span>
+        <a href="#meetups" title="AIX meetups at Caltech"><img class="h-caltech" src="static/logos/caltech.svg" alt="Caltech"></a>
+        <a href="#meetups" title="AIX meetups at UCLA"><img class="h-ucla" src="static/logos/ucla.svg" alt="UCLA"></a>
+      </div>
     </div>
 
-    <br/>
-		
-    <div id="speakers" class="container" align="justify">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 thumb">
-                    <h4>Speakers</h4>
-                    <hr>
-                </div>
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">What we do</span>
+          <h2>Building bridges between research and real-world AI</h2>
+          <p>We partner with conferences, workshops and research communities to create the moments where meaningful connections happen — on stage, at the dinner table and over lunch.</p>
+        </div>
+        <div class="pillars">
+          <article class="pillar reveal">
+            <img src="static/photos/panel.jpg" alt="Panel discussion at a conference" loading="lazy">
+            <div><h3>Sponsorships &amp; awards</h3><p>Industry sponsorship for workshops and challenges, including winner awards that recognize outstanding student research.</p></div>
+          </article>
+          <article class="pillar reveal">
+            <img src="static/photos/dinner.jpg" alt="Researchers talking over dinner" loading="lazy">
+            <div><h3>Speaker dinners</h3><p>Intimate dinners where invited speakers, faculty and organizers continue the conversation beyond the program.</p></div>
+          </article>
+          <article class="pillar reveal">
+            <img src="static/photos/conference.jpg" alt="Attendees gathered at a conference" loading="lazy">
+            <div><h3>Community socials</h3><p>Lunch receptions, social hours and community dinners that bring students, researchers and practitioners together.</p></div>
+          </article>
+          <article class="pillar reveal">
+            <img src="static/caltech/OCT2024.jpg" alt="AIX lunch meetup at Caltech" loading="lazy">
+            <div><h3>Research meetups</h3><p>Regular lunch talks at Caltech and UCLA where early-career researchers share their latest work.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="featured" id="community">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">Our workshop community</span>
+          <h2>Alongside leading voices in AI</h2>
+          <p>The workshops and symposia AIX has supported have brought together invited speakers and organizers from Stanford, UT Austin, UIUC, UCLA, NYU, Northwestern and beyond.</p>
+        </div>
+        <div class="luminaries">
+          <div class="lum reveal">
+            <img src="static/featured/feifei-li.png" alt="Fei-Fei Li" loading="lazy">
+            <strong>Fei-Fei Li</strong><span class="org">Stanford University</span>
+            <ul><li><b>Steering Committee</b>FMEA @ CVPR 2026</li><li><b>Organizing Committee</b>EAI @ NeurIPS 2025</li></ul>
+          </div>
+          <div class="lum reveal">
+            <img src="static/featured/jiajun-wu.png" alt="Jiajun Wu" loading="lazy">
+            <strong>Jiajun Wu</strong><span class="org">Stanford University</span>
+            <ul><li><b>Steering Committee</b>FMEA @ CVPR 2026</li><li><b>Organizing Committee</b>EAI @ NeurIPS 2025</li></ul>
+          </div>
+          <div class="lum reveal">
+            <img src="static/featured/yejin-choi.png" alt="Yejin Choi" loading="lazy">
+            <strong>Yejin Choi</strong><span class="org">Stanford · NVIDIA</span>
+            <ul><li><b>Steering Committee</b>FMEA @ CVPR 2026</li><li><b>Organizing Committee</b>EAI @ NeurIPS 2025</li></ul>
+          </div>
+          <div class="lum reveal">
+            <img src="static/featured/percy-liang.jpeg" alt="Percy Liang" loading="lazy">
+            <strong>Percy Liang</strong><span class="org">Stanford University</span>
+            <ul><li><b>Organizing Committee</b>EAI @ NeurIPS 2025</li></ul>
+          </div>
+          <div class="lum reveal">
+            <img src="static/featured/kristen-grauman.jpg" alt="Kristen Grauman" loading="lazy">
+            <strong>Kristen Grauman</strong><span class="org">UT Austin</span>
+            <ul><li><b>Invited Speaker</b>FMEA @ CVPR 2026</li></ul>
+          </div>
+          <div class="lum reveal">
+            <img src="static/featured/xudong-wang.png" alt="Xudong Wang" loading="lazy">
+            <strong>Xudong Wang</strong><span class="org">Physical Intelligence</span>
+            <ul><li><b>Invited Speaker</b>FMEA @ CVPR 2026</li></ul>
+          </div>
+          <div class="lum reveal">
+            <img src="static/featured/heng-ji.jpg" alt="Heng Ji" loading="lazy">
+            <strong>Heng Ji</strong><span class="org">UIUC</span>
+            <ul><li><b>Invited Speaker</b>SoCal NLP 2024</li></ul>
+          </div>
+          <div class="lum reveal">
+            <img src="static/featured/kaiwei-chang.jpg" alt="Kai-Wei Chang" loading="lazy">
+            <strong>Kai-Wei Chang</strong><span class="org">UCLA</span>
+            <ul><li><b>Invited Speaker</b>Texas NLP 2026</li></ul>
+          </div>
+          <div class="lum reveal">
+            <img src="static/featured/eunsol-choi.jpg" alt="Eunsol Choi" loading="lazy">
+            <strong>Eunsol Choi</strong><span class="org">NYU</span>
+            <ul><li><b>Invited Speaker</b>SoCal NLP 2024</li></ul>
+          </div>
+          <div class="lum reveal">
+            <img src="static/featured/manling-li.jpg" alt="Manling Li" loading="lazy">
+            <strong>Manling Li</strong><span class="org">Northwestern University</span>
+            <ul><li><b>Organizer</b>FMEA @ CVPR 2026</li><li><b>Organizer</b>EAI @ NeurIPS 2025</li></ul>
+          </div>
+        </div>
+        <p class="featured-note">Roles refer to the respective workshops, as listed on their official websites.</p>
+      </div>
+    </section>
+
+    <section id="activities" class="alt">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">Community activities</span>
+          <h2>Workshops &amp; symposia we've supported</h2>
+          <p>Since 2024, AIX has partnered with leading AI workshops and research communities across computer vision, embodied AI and NLP.</p>
+        </div>
+        <div class="events">
+          <article class="event ev-cvpr wide reveal">
+            <span class="ev-year" aria-hidden="true">2026</span>
+            <div class="ev-top"><span class="chip role">AIX · Sponsor</span><span class="chip">June 4, 2026</span><span class="chip">Denver, CO</span></div>
+            <h3 class="ev-title">FMEA <span>@ CVPR 2026</span></h3>
+            <p class="ev-full">Foundation Models Meet Embodied Agents — CVPR 2026 Workshop</p>
+            <div class="ev-people">
+              <div class="avatars"><img src="static/featured/kristen-grauman.jpg" alt="Kristen Grauman" title="Kristen Grauman" loading="lazy"><img src="static/featured/weichiu-ma.png" alt="Wei-Chiu Ma" title="Wei-Chiu Ma" loading="lazy"><img src="static/featured/xudong-wang.png" alt="Xudong Wang" title="Xudong Wang" loading="lazy"><img src="static/featured/kaichun-mo.jpg" alt="Kaichun Mo" title="Kaichun Mo" loading="lazy"><img src="static/featured/anchieh-cheng.png" alt="An-Chieh Cheng" title="An-Chieh Cheng" loading="lazy"><img src="static/featured/feifei-li.png" alt="Li Fei-Fei" title="Li Fei-Fei" loading="lazy"><img src="static/featured/jiajun-wu.png" alt="Jiajun Wu" title="Jiajun Wu" loading="lazy"><img src="static/featured/yejin-choi.png" alt="Yejin Choi" title="Yejin Choi" loading="lazy"><img src="static/featured/yonatan-bisk.png" alt="Yonatan Bisk" title="Yonatan Bisk" loading="lazy"></div>
+              <p class="ev-group"><b>Invited speakers</b>Kristen Grauman, Wei-Chiu Ma, Xudong Wang, Kaichun Mo, An-Chieh Cheng</p>
+              <p class="ev-group"><b>Steering committee</b>Li Fei-Fei, Jiajun Wu, Yejin Choi, Yonatan Bisk</p>
             </div>
+            <div class="ev-foot"><a class="ev-link" href="https://foundation-models-meet-embodied-agents.github.io/cvpr2026/" target="_blank" rel="noopener">Visit website <span aria-hidden="true">→</span></a></div>
+          </article>
+          <article class="event ev-neurips reveal">
+            <span class="ev-year" aria-hidden="true">2025</span>
+            <div class="ev-top"><span class="chip role">AIX · Main industry sponsor</span><span class="chip">Dec 7, 2025</span><span class="chip">San Diego, CA</span></div>
+            <h3 class="ev-title">EAI <span>@ NeurIPS 2025</span></h3>
+            <p class="ev-full">Embodied Agent Interface Challenge — NeurIPS 2025 Competition Track</p>
+            <div class="ev-people">
+              <div class="avatars"><img src="static/featured/feifei-li.png" alt="Li Fei-Fei" title="Li Fei-Fei" loading="lazy"><img src="static/featured/jiajun-wu.png" alt="Jiajun Wu" title="Jiajun Wu" loading="lazy"><img src="static/featured/yejin-choi.png" alt="Yejin Choi" title="Yejin Choi" loading="lazy"><img src="static/featured/percy-liang.jpeg" alt="Percy Liang" title="Percy Liang" loading="lazy"><img src="static/featured/manling-li.jpg" alt="Manling Li" title="Manling Li" loading="lazy"><img src="static/featured/erran-li.png" alt="Li Erran Li" title="Li Erran Li" loading="lazy"></div>
+              <p class="ev-group"><b>Organizers include</b>Li Fei-Fei, Jiajun Wu, Yejin Choi, Percy Liang, Manling Li, Li Erran Li</p>
+            </div>
+            <div class="ev-foot"><a class="ev-link" href="https://foundation-models-meet-embodied-agents.github.io/eai_challenge/" target="_blank" rel="noopener">Visit website <span aria-hidden="true">→</span></a></div>
+          </article>
+          <article class="event ev-texas reveal">
+            <span class="ev-year" aria-hidden="true">2026</span>
+            <div class="ev-top"><span class="chip role">AIX · Sponsor</span><span class="chip">Apr 3, 2026</span><span class="chip">Texas A&amp;M University</span></div>
+            <h3 class="ev-title">Texas NLP <span>2026</span></h3>
+            <p class="ev-full">Texas NLP Symposium 2026</p>
+            <div class="ev-people">
+              <div class="avatars"><img src="static/featured/raymond-mooney.jpg" alt="Raymond Mooney" title="Raymond Mooney" loading="lazy"><img src="static/featured/kaiwei-chang.jpg" alt="Kai-Wei Chang" title="Kai-Wei Chang" loading="lazy"></div>
+              <p class="ev-group"><b>Invited speakers</b>Raymond Mooney (UT Austin), Kai-Wei Chang (UCLA)</p>
+            </div>
+            <div class="ev-foot"><a class="ev-link" href="https://texas-nlp.github.io/2026/index.html" target="_blank" rel="noopener">Visit website <span aria-hidden="true">→</span></a></div>
+          </article>
+          <article class="event ev-socal wide reveal">
+            <span class="ev-year" aria-hidden="true">2024</span>
+            <div class="ev-top"><span class="chip role">AIX · Platinum sponsor</span><span class="chip">Nov 22, 2024</span><span class="chip">UC San Diego</span></div>
+            <h3 class="ev-title">SoCal NLP <span>2024</span></h3>
+            <p class="ev-full">Southern California NLP Symposium 2024</p>
+            <div class="ev-people">
+              <div class="avatars"><img src="static/featured/heng-ji.jpg" alt="Heng Ji" title="Heng Ji" loading="lazy"><img src="static/featured/eunsol-choi.jpg" alt="Eunsol Choi" title="Eunsol Choi" loading="lazy"><img src="static/featured/taylor-bk.jpg" alt="Taylor Berg-Kirkpatrick" title="Taylor Berg-Kirkpatrick" loading="lazy"><span class="ini" title="Dawei Huang">DH</span></div>
+              <p class="ev-group"><b>Invited speakers</b>Heng Ji (UIUC), Eunsol Choi (NYU), Taylor Berg-Kirkpatrick (UCSD), Dawei Huang (SambaNova)</p>
+            </div>
+            <div class="ev-foot"><a class="ev-link" href="https://socalnlp.github.io/symp24/index.html" target="_blank" rel="noopener">Visit website <span aria-hidden="true">→</span></a></div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-	    <div class="row">
-		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb">
-                  <figure style="margin: auto;" class="rounded">
-                        <img src="static/speaker/ZeweiZhouUCLA.jpg" class="img-fluid mx-auto d-block" style="margin-top:-15px"/>
-                    </figure> 
-		    <p class="text-center caption"><b><a href="https://zewei-zhou.github.io/" target="_block">Zewei Zhou</a></b></p>
-                    <p class="text-center caption caption-role"><b>PhD Candidate</b></p>
-                    <p class="text-center caption caption-role"><b>UCLA Mobility Lab</b></p>
-                    <p class="text-center caption caption-loc"><i>UCLA</i></p>
-                </div>
-		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb">
-                  <figure style="margin: auto;" class="rounded">
-                        <img src="static/ucla/ShunYe_UCLA.jpeg" class="img-fluid mx-auto d-block" style="margin-top:-15px"/>
-                    </figure> 
-		    <p class="text-center caption"><b><a href="https://www.linkedin.com/in/ebot/" target="_block">Shun Ye</a></b></p>
-                    <p class="text-center caption caption-role"><b>PhD Candidate</b></p>
-                    <p class="text-center caption caption-role"><b>Bioengineering (BE)</b></p>
-                    <p class="text-center caption caption-loc"><i>UCLA</i></p>
-                </div>
-		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb">
-                  <figure style="margin: auto;" class="rounded">
-                        <img src="static/speaker/YaozhongShiCaltech.png" class="img-fluid mx-auto d-block" style="margin-top:-15px"/>
-                    </figure>
-                    <p class="text-center caption"><b>Yaozhong Shi</b></p>
-                    <p class="text-center caption caption-role"><b>PhD Candidate</b></p>
-                    <p class="text-center caption caption-role"><b>Mechanical Engineering (ME)</b></p>
-                    <p class="text-center caption caption-loc"><i>Caltech</i></p>
-		</div>
-		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb">
-                  <figure style="margin: auto;" class="rounded">
-                        <img src="static/speaker/ZhiyuHuangUCLA.jpg" class="img-fluid mx-auto d-block" style="margin-top:-15px"/>
-                    </figure> 
-		    <p class="text-center caption"><b><a href="https://mczhi.github.io/" target="_block">Zhiyu Huang</a></b></p>
-                    <p class="text-center caption caption-role"><b>Postdoctoral Scholar</b></p>
-                    <p class="text-center caption caption-role"><b>UCLA Mobility Lab </b></p>
-                    <p class="text-center caption caption-loc"><i>UCLA</i></p>
-                </div>
-		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb">
-                  <figure style="margin: auto;" class="rounded">
-                        <img src="static/speaker/ZidaWuUCLA.jpg" class="img-fluid mx-auto d-block" style="margin-top:-15px"/>
-                    </figure> 
-		    <p class="text-center caption"><b><a href="https://sites.google.com/g.ucla.edu/zidawu/home" target="_block">Zida Wu</a></b></p>
-                    <p class="text-center caption caption-role"><b>PhD Candidate</b></p>
-                    <p class="text-center caption caption-role"><b>Electrical and Computer Engineering (ECE)</b></p>
-                    <p class="text-center caption caption-loc"><i>UCLA</i></p>
-                </div>
-		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb">
-                  <figure style="margin: auto;" class="rounded">
-                        <img src="static/speaker/ZhaoliangZhengUCLA.png" class="img-fluid mx-auto d-block" style="margin-top:-15px"/>
-                    </figure> 
-		    <p class="text-center caption"><b><a href="https://zhz03.github.io/" target="_block">Zhaoliang Zheng</a></b></p>
-                    <p class="text-center caption caption-role"><b>PhD Candidate</b></p>
-                    <p class="text-center caption caption-role"><b>UCLA Mobility Lab (ECE)</b></p>
-                    <p class="text-center caption caption-loc"><i>UCLA</i></p>
-                </div>
-		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb">
-                  <figure style="margin: auto;" class="rounded">
-                        <img src="https://cwwangcal.github.io/images/self3.png" class="img-fluid mx-auto d-block" style="margin-top:-15px"/>
-                    </figure>
-                    <p class="text-center caption"><b><a href="https://cwwangcal.github.io/" target="_block">Chuwei Wang</a></b></p>
-                    <p class="text-center caption caption-role"><b>PhD Student</b></p>
-                    <p class="text-center caption caption-role"><b>Computing and Mathematical Sciences (CMS)</b></p>
-                    <p class="text-center caption caption-loc"><i>Caltech</i></p>
-                </div> 
-		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb">
-                  <figure style="margin: auto;" class="rounded">
-                        <img src="static/speaker/LizhiYangCaltech.jpg" class="img-fluid mx-auto d-block" style="margin-top:-15px"/>
-                    </figure>
-                    <p class="text-center caption"><b>Lizhi Yang</b></p>
-                    <p class="text-center caption caption-role"><b>PhD Candidate</b></p>
-                    <p class="text-center caption caption-role"><b>Robotics</b></p>
-                    <p class="text-center caption caption-role"><b>Mechanical and Civil Engineering (MCE)</b></p>
-                    <p class="text-center caption caption-loc"><i>Caltech</i></p>
-                </div>  
-		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb">
-                  <figure style="margin: auto;" class="rounded">
-                        <img src="static/speaker/HongkaiZhengCaltech.jpg" class="img-fluid mx-auto d-block" style="margin-top:-15px"/>
-                    </figure>
-                    <p class="text-center caption"><b><a href="https://devzhk.myportfolio.com/" target="_block">Hongkai Zheng</a></b></p>
-                    <p class="text-center caption caption-role"><b>PhD Candidate</b></p>
-                    <p class="text-center caption caption-role"><b>Computing and Mathematical Sciences (CMS)</b></p>
-                    <p class="text-center caption caption-loc"><i>Caltech</i></p>
-                </div>  
-		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb">
-                  <figure style="margin: auto;" class="rounded">
-                        <img src="static/speaker/SijieJiCaltech.jpg" class="img-fluid mx-auto d-block" style="margin-top:-15px"/>
-                    </figure>
-                    <p class="text-center caption"><b>Sijie Ji</b></p>
-                    <p class="text-center caption caption-role"><b>Schmidt Science Fellow</b></p>
-                    <p class="text-center caption caption-loc"><i>Caltech</i></p>
-                </div>
-		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb">
-                  <figure style="margin: auto;" class="rounded">
-                        <img src="static/speaker/Mickey.jpg" class="img-fluid mx-auto d-block" style="margin-top:-15px"/>
-                    </figure>
-                    <p class="text-center caption"><b>Sze Chai (Mickey) Leung</b></p>
-                    <p class="text-center caption caption-role"><b>PhD Student</b></p>
-                    <p class="text-center caption caption-role"><b>Mechanical and Civil Engineering (MCE)</b></p>
-                    <p class="text-center caption caption-loc"><i>Caltech</i></p>
-                </div>
-		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb">
-                  <figure style="margin: auto;" class="rounded">
-                       <a href="https://hwzhou2020.github.io" target="_block">
-                           <img src="https://hwzhou2020.github.io/images/Haowen_Zhou.jpg" class="img-fluid mx-auto d-block" style="margin-top:-15px"/>
-                       </a>
-                    </figure>
-                    <p class="text-center caption"><b><a href="https://hwzhou2020.github.io" target="_block">Haowen Zhou</a></b></p>
-                    <p class="text-center caption caption-role"><b>PhD Candidate</b></p>
-		    <p class="text-center caption caption-role"><b><a href="https://biophot.caltech.edu" target="_block">Biophotonics Lab</a></b></p>
-                    <p class="text-center caption caption-role"><b>Electrical Engineering (EE)</b></p>
-                    <p class="text-center caption caption-loc"><i>Caltech</i></p>
-                </div>
-		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb">
-                  <figure style="margin: auto;" class="rounded">
-                       <a href="https://hwzhou2020.github.io" target="_block">
-                           <img src="static/speaker/JiachenYaoCaltech.png" class="img-fluid mx-auto d-block" style="margin-top:-15px"/>
-                       </a>
-                    </figure>
-                    <p class="text-center caption"><b><a href="https://www.jiachenyao.com">Jiachen Yao</a></b></p>
-                    <p class="text-center caption caption-role"><b>PhD Student</b></p>
-                    <p class="text-center caption caption-role"><b>Computing and Mathematical Sciences (CMS)</b></p>
-                    <p class="text-center caption caption-loc"><i>Caltech</i></p>
-                </div>
-	    </div>
-            <br/>    
-	    <br/>
-                    <!--
-	    	    <h5 id="07032025"> someone </h5>
-                    <b>Title:</b> title <br/><br/>
-                    <b>Abstract:</b> abs <br/><br/>
-                    <b>Bio:</b> bio  <br/><br/><br/>
-		    -->
+    <section id="meetups">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">Meetups</span>
+          <h2>AIX lunch talks</h2>
+          <p>Casual lunch meetups at Caltech and UCLA where PhD students and postdocs present their research to a cross-disciplinary audience. Tap a talk to read the abstract and speaker bio.</p>
+        </div>
+        <div class="gallery">
+          <figure class="reveal"><img src="static/caltech/OCT2024.jpg" alt="First AIX lunch meetup at Caltech" loading="lazy"><figcaption><b>Caltech · Oct 2024</b>The first AIX lunch meetup</figcaption></figure>
+          <figure class="reveal"><img src="static/ucla/MAY2025.jpg" alt="AIX lunch meetup at UCLA" loading="lazy"><figcaption><b>UCLA · May 2025</b>AIX lunch meetup</figcaption></figure>
+        </div>
 
-	    	    <h5 id="10102025"> Zewei Zhou </h5>
-                    <b>Title:</b>Towards End-to-End Cooperative Automation with Multi-agent Spatio-temporal Scene Understanding<br/><br/>
-                    <b>Abstract:</b>Cooperative automation offers a promising paradigm to mitigate the limitations of constrained observability in single-vehicle systems through information exchange. However, existing cooperative systems are limited in cooperative perception tasks with single-frame multi-agent fusion, leading to a constrained scenario understanding without temporal cues. This talk will explore how cooperative systems can achieve comprehensive spatio-temporal scene understanding and be jointly optimized across the full autonomy stack: perception, prediction, and planning. We will begin by introducing <a href="https://mobility-lab.seas.ucla.edu/v2xpnp/">V2XPnP-Seq</a>, the first real-world sequential dataset supporting all V2X collaboration modes, along with a comprehensive benchmark encompassing 11 distinct fusion methods. Next, the talk will present <a href="https://mobility-lab.seas.ucla.edu/v2xpnp/">V2XPnP</a>, a novel intermediate fusion end-to-end framework that operates within a single communication step. Compared with traditional multi-step strategies, this framework achieves a 12% improvement in perception and prediction accuracy while reducing communication overhead by 5×. Training such a complex multi-agent, multi-frame, and multi-task system poses significant challenges. To address these, we introduce <a href="https://arxiv.org/pdf/2508.04682">TurboTrain</a>, an efficient training paradigm that integrates spatio-temporal pretraining with balanced fine-tuning, achieving 2× faster convergence and improved performance while preserving deployable, task-agnostic spatio-temporal features. Finally, the talk will extend to the crucial task of planning. We introduce the vision-language-action (VLA) model, the emerging paradigm for end-to-end autonomous driving, to single-agent systems through <a href="https://autovla.github.io/">AutoVLA</a>, which integrates chain-of-thought reasoning and physical action tokenization to directly generate planning trajectories via a unified autoregressive process, dynamically switching between dual-thinking modes. We will conclude by discussing future research directions toward end-to-end cooperative automation systems with the VLA models. <br/><br/>
-                    <b>Bio:</b>Zewei Zhou is a Ph.D. candidate at the UCLA Mobility Lab. He received his master’s degree from Tongji University with the honor of Shanghai Outstanding Graduate. His research focuses on the scene understanding and reasoning of autonomous systems, which enables vehicles/robots to intelligently interact and cooperate with others. He received the Amazon AI PhD Fellowship 2025 and the Tier 1 Winner of the U.S. DOT Intersection Safety Challenge. His research has been published in top-tier venues such as NeurIPS, ICCV, and ICRA. <br/><br/><br/>
+        <div class="year-head"><h3>2025</h3><span>11 talks</span></div>
+        <div class="talks">
+        <details class="talk" id="t10102025">
+          <summary>
+            <div class="talk-date"><span>Oct</span><b>10</b></div>
+            <img class="talk-avatar" src="static/speaker/ZeweiZhouUCLA.jpg" alt="" loading="lazy">
+            <div class="talk-main">
+              <h4>Towards End-to-End Cooperative Automation with Multi-agent Spatio-temporal Scene Understanding</h4>
+              <p>Zewei Zhou <span class="dot">·</span> <span class="aff aff-ucla">UCLA</span></p>
+            </div>
+            <span class="talk-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="talk-body">
+            <div class="talk-speaker">
+              <img src="static/speaker/ZeweiZhouUCLA.jpg" alt="Zewei Zhou" loading="lazy">
+              <div><strong><a href="https://zewei-zhou.github.io/" target="_blank" rel="noopener">Zewei Zhou</a></strong><span>PhD Candidate · UCLA Mobility Lab, UCLA</span></div>
+            </div>
+            <h5>Abstract</h5>
+            <p>Cooperative automation offers a promising paradigm to mitigate the limitations of constrained observability in single-vehicle systems through information exchange. However, existing cooperative systems are limited in cooperative perception tasks with single-frame multi-agent fusion, leading to a constrained scenario understanding without temporal cues. This talk will explore how cooperative systems can achieve comprehensive spatio-temporal scene understanding and be jointly optimized across the full autonomy stack: perception, prediction, and planning. We will begin by introducing <a target="_blank" rel="noopener" href="https://mobility-lab.seas.ucla.edu/v2xpnp/">V2XPnP-Seq</a>, the first real-world sequential dataset supporting all V2X collaboration modes, along with a comprehensive benchmark encompassing 11 distinct fusion methods. Next, the talk will present <a target="_blank" rel="noopener" href="https://mobility-lab.seas.ucla.edu/v2xpnp/">V2XPnP</a>, a novel intermediate fusion end-to-end framework that operates within a single communication step. Compared with traditional multi-step strategies, this framework achieves a 12% improvement in perception and prediction accuracy while reducing communication overhead by 5×. Training such a complex multi-agent, multi-frame, and multi-task system poses significant challenges. To address these, we introduce <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2508.04682">TurboTrain</a>, an efficient training paradigm that integrates spatio-temporal pretraining with balanced fine-tuning, achieving 2× faster convergence and improved performance while preserving deployable, task-agnostic spatio-temporal features. Finally, the talk will extend to the crucial task of planning. We introduce the vision-language-action (VLA) model, the emerging paradigm for end-to-end autonomous driving, to single-agent systems through <a target="_blank" rel="noopener" href="https://autovla.github.io/">AutoVLA</a>, which integrates chain-of-thought reasoning and physical action tokenization to directly generate planning trajectories via a unified autoregressive process, dynamically switching between dual-thinking modes. We will conclude by discussing future research directions toward end-to-end cooperative automation systems with the VLA models.</p>
+            <h5>About the speaker</h5>
+            <p>Zewei Zhou is a Ph.D. candidate at the UCLA Mobility Lab. He received his master’s degree from Tongji University with the honor of Shanghai Outstanding Graduate. His research focuses on the scene understanding and reasoning of autonomous systems, which enables vehicles/robots to intelligently interact and cooperate with others. He received the Amazon AI PhD Fellowship 2025 and the Tier 1 Winner of the U.S. DOT Intersection Safety Challenge. His research has been published in top-tier venues such as NeurIPS, ICCV, and ICRA.</p>
+          </div>
+        </details>
+        <details class="talk" id="t10092025">
+          <summary>
+            <div class="talk-date"><span>Oct</span><b>9</b></div>
+            <img class="talk-avatar" src="static/speaker/JiachenYaoCaltech.png" alt="" loading="lazy">
+            <div class="talk-main">
+              <h4>Better Inverse Solver by Regularization</h4>
+              <p>Jiachen Yao <span class="dot">·</span> <span class="aff aff-caltech">Caltech</span></p>
+            </div>
+            <span class="talk-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="talk-body">
+            <div class="talk-speaker">
+              <img src="static/speaker/JiachenYaoCaltech.png" alt="Jiachen Yao" loading="lazy">
+              <div><strong><a href="https://www.jiachenyao.com" target="_blank" rel="noopener">Jiachen Yao</a></strong><span>PhD Student · Computing + Mathematical Sciences, Caltech</span></div>
+            </div>
+            <h5>Abstract</h5>
+            <p>Inverse problems in scientific computing are foundational yet challenging due to high dimensionality, ill-posedness, and uncertainty. Traditional methods like optimization or MCMC often struggle with computational expense and robustness to noise. While generative models have emerged for solving PDEs, they often lack flexibility or stability. Incorporating additional bias or regularization is a powerful strategy for improving both the accuracy and stability of these models. First, we leverage the natural function-space structure of PDE solutions by introducing Function-space Diffusion Posterior Sampling (FunDPS), the first function-space diffusion framework for solving PDE inverse problems. By training unconditional denoisers on functions and applying guidance under theoretical guarantees, FunDPS achieves up to 32% accuracy gains and 25x computational efficiency over grid-based baselines. The architecture also unlocks powerful multi-resolution strategies for further speedups. In addition, we propose an equivariance regularization loss that leverages the inherent symmetries of a physical system. This method guides the diffusion model to generate solutions that more closely adhere to the target distribution, alleviating artifacts introduced by guidance. This regularizer shows consistent improvement on many inverse solvers. In summary, our work demonstrates that integrating specialized regularization is highly effective for generative models in scientific applications.</p>
+            <h5>About the speaker</h5>
+            <p>Jiachen Yao is a PhD student at Caltech in Computing + Mathematical Sciences advised by Anima Anandkumar. His research focuses on deep generative modeling and scientific problems, learning strong priors from data and physics to model complex systems.</p>
+          </div>
+        </details>
+        <details class="talk" id="t09042025">
+          <summary>
+            <div class="talk-date"><span>Sep</span><b>4</b></div>
+            <img class="talk-avatar" src="static/speaker/DefuCaoUSC.jpeg" alt="" loading="lazy">
+            <div class="talk-main">
+              <h4>Time Series Foundation Models</h4>
+              <p>Defu Cao <span class="dot">·</span> <span class="aff aff-usc">USC</span></p>
+            </div>
+            <span class="talk-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="talk-body">
+            <div class="talk-speaker">
+              <img src="static/speaker/DefuCaoUSC.jpeg" alt="Defu Cao" loading="lazy">
+              <div><strong><a href="https://idevede.github.io/" target="_blank" rel="noopener">Defu Cao</a></strong><span>PhD Student · Computer Science, USC</span></div>
+            </div>
+            <h5>Abstract</h5>
+            <p>Recent advancements in foundation models have revolutionized natural language processing and computer vision, but their application to time series data has remained limited. This talk explores the emerging frontier of foundation models for temporal data, highlighting recent breakthroughs that promise to transform time series analysis and forecasting across diverse domains. We begin by examining TEMPO, a novel prompt-based generative pre-trained transformer for time series forecasting. Building on TEMPO's insights, we discuss the latest developments in transformer diffusion architectures like TimeDiT, which push the boundaries of performance in tasks such as imputation, forecasting, and anomaly detection. We explore how these models capture intricate temporal dependencies and generalize across diverse time series data, from weather patterns to financial markets. The talk will cover the challenges and opportunities in scaling these models to larger datasets and more complex temporal phenomena. We'll examine their potential impact on real-world applications in climate science, energy management, healthcare, and finance. Finally, we'll look ahead to future research directions, including multimodal integration and interpretability, that could further expand the capabilities of time series foundation models.</p>
+            <h5>About the speaker</h5>
+            <p>Defu Cao is a Ph.D. student in the Thomas Lord Department of Computer Science at the University of Southern California, working with Prof. Yan Liu at the USC Melady Lab. He is also working with Prof. Angela Zhou from USC Marshall Data Sciences and Operations. Prior, he earned his Master’s Degree at the School of EECS Peking University, where he was co-advised by Prof. Xu Cheng and Prof. Xianhua Liu. Cao’s research primarily focuses on developing advanced machine learning and data mining algorithms for structured data, with a particular emphasis on time series foundation models. His work aims to create models that demonstrate a deep understanding of temporal patterns and dynamics in various domains, including spatio-temporal and relational data. To this end, his research aims to integrate causal inference, graph neural networks, spectral domain representation, interpretability, and robustness. In addition, he is also interested in causal representation learning and pre-training large language models. He has published his research in top conference proceedings including NeurIPS, CVPR, ICLR, ICRA, ICDM, and NAACL.</p>
+          </div>
+        </details>
+        <details class="talk" id="t05292025">
+          <summary>
+            <div class="talk-date"><span>May</span><b>29</b></div>
+            <img class="talk-avatar" src="static/ucla/ShunYe_UCLA.jpeg" alt="" loading="lazy">
+            <div class="talk-main">
+              <h4>Breaking into Academic Startups and Entrepreneur Ventures</h4>
+              <p>Shun Ye <span class="dot">·</span> <span class="aff aff-ucla">UCLA</span></p>
+            </div>
+            <span class="talk-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="talk-body">
+            <div class="talk-speaker">
+              <img src="static/ucla/ShunYe_UCLA.jpeg" alt="Shun Ye" loading="lazy">
+              <div><strong><a href="https://www.linkedin.com/in/ebot/" target="_blank" rel="noopener">Shun Ye</a></strong><span>PhD Candidate · Bioengineering, UCLA</span></div>
+            </div>
+            <h5>Abstract</h5>
+            <p>Translating research into real-world solutions has been the core theme of my work at the intersection of biomedical engineering, microfluidics, AI, and point-of-care diagnostics. In this talk, I will share my journey developing automated biomedical devices, from lab prototypes to market-oriented technologies. I will also provide an overview of common fundraising pathways for academic entrepreneurs, including angel investors, friends and family rounds, venture capital, and strategic collaborations with industry partners. To ground the discussion, I will present my latest startup effort: developing a <a href="https://www.linkedin.com/company/ebot-bio/" target="_blank">Miniature AI Robot Scientist</a>, designed to automate the full experimental workflow on a single benchtop. This compact, intelligent system aims to streamline R&amp;D processes for small labs and early-stage biotech teams. Finally, I will reflect on the unique advantages and inherent challenges of launching a startup from an academic setting—balancing innovation, resource constraints, and the steep learning curve of entrepreneurship.</p>
+            <h5>About the speaker</h5>
+            <p>Shun Ye is the Founder of eBot Bio, which aims to cut R&amp;D costs by 95%. He is also a PhD Candidate in the Bioengineering and Electrical Engineering departments and California NanoSystems Institute (CNSI) at UCLA. Before joining UCLA, he earned a Master's degree in Biomedical Engineering from Penn State University and completed a research fellowship in Analytical Microfluidics at the Chinese Academy of Sciences. Shun has six years of experience in biomedical instrumentation, automation, and AI. He has eight journal publications and four issued patents. He developed the OsciDrop technology, which was featured as a cover article in Analytical Chemistry and has been commercialized as the world's first all-in-one, automatic, chip-free digital PCR machine (D600, Maccura Biotech Co., Ltd.), with six fluorescent channels, and has received $20M in Venture Capital. He is currently co-supervised by pioneering medical device scholars Prof. Dino Di Carlo and Aydogan Ozcan. His doctoral research focuses on developing and translating novel biomedical devices and micro/nanotechnologies for AI-powered lab automation, point-of-care diagnostics, and other industry and clinical applications.</p>
+          </div>
+        </details>
+        <details class="talk" id="t05222025">
+          <summary>
+            <div class="talk-date"><span>May</span><b>22</b></div>
+            <img class="talk-avatar" src="static/speaker/YaozhongShiCaltech.png" alt="" loading="lazy">
+            <div class="talk-main">
+              <h4>Stochastic Process Learning via Operator Flow Matching</h4>
+              <p>Yaozhong Shi <span class="dot">·</span> <span class="aff aff-caltech">Caltech</span></p>
+            </div>
+            <span class="talk-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="talk-body">
+            <div class="talk-speaker">
+              <img src="static/speaker/YaozhongShiCaltech.png" alt="Yaozhong Shi" loading="lazy">
+              <div><strong>Yaozhong Shi</strong><span>PhD Candidate · Mechanical Engineering, Caltech (at time of talk)</span><span class="now">Now: Postdoctoral Scholar, Caltech</span></div>
+            </div>
+            <h5>Abstract</h5>
+            <p>This talk begins by demonstrating how traditional generative models, specifically diffusion and flow-matching methods, can be lifted from finite-dimensional settings to infinite-dimensional function spaces. Building on flow matching formulated in Hilbert space, it then shows how Gaussian process regression can be generalised to full stochastic-process regression. The talk concludes with an overview of the latest neural-operator architectures designed for efficient learning on irregular grids. Relevant papers are <a href="https://arxiv.org/abs/2501.04126" target="_blank">Stochastic Process Learning via Operator Flow Matching</a> and <a href="https://www.arxiv.org/abs/2506.16656" target="_blank">Mesh-Informed Neural Operator : A Transformer Generative Approach</a>.</p>
+            <h5>About the speaker</h5>
+            <p>Yaozhong Shi is a PhD student at Mechanical Engineering (ME) in Caltech.</p>
+          </div>
+        </details>
+        <details class="talk" id="t05022025">
+          <summary>
+            <div class="talk-date"><span>May</span><b>2</b></div>
+            <img class="talk-avatar" src="static/speaker/ZhiyuHuangUCLA.jpg" alt="" loading="lazy">
+            <div class="talk-main">
+              <h4>Scalable, Learnable, and Interactive Autonomous Driving Systems</h4>
+              <p>Zhiyu Huang <span class="dot">·</span> <span class="aff aff-ucla">UCLA</span></p>
+            </div>
+            <span class="talk-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="talk-body">
+            <div class="talk-speaker">
+              <img src="static/speaker/ZhiyuHuangUCLA.jpg" alt="Zhiyu Huang" loading="lazy">
+              <div><strong><a href="https://mczhi.github.io/" target="_blank" rel="noopener">Zhiyu Huang</a></strong><span>Postdoctoral Scholar · UCLA Mobility Lab, UCLA (at time of talk)</span><span class="now">Now: Assistant Professor, NC State University</span></div>
+            </div>
+            <h5>Abstract</h5>
+            <p>This talk presents a series of learning-based frameworks for interactive and scalable decision-making in autonomous driving. We begin with Differentiable Integrated Prediction and Planning (DIPP), which couples prediction and planning in a differentiable architecture to enable planning-aware predictions. Building upon this, GameFormer introduces a level-k game-theoretic modeling approach using Transformers to capture mutual interactions among agents. DTPP (Differentiable Conditional Prediction and Cost Evaluation for Tree Policy Planning) leverages a structured tree-based planner with jointly learnable prediction and cost modules, allowing more efficient and human-aligned decisions. Finally, GenDrive applies diffusion models for generative driving policy learning, further enhancing flexibility and robustness. These frameworks demonstrate how principled integration of deep learning, game theory, and generative modeling can advance decision-making capabilities in complex autonomous driving environments.</p>
+            <h5>About the speaker</h5>
+            <p>Dr. Zhiyu Huang is currently a Postdoctoral Scholar at the UCLA Mobility Lab. He received his Ph.D. from Nanyang Technological University (NTU), working in the AutoMan Research Lab. His previous experience includes a research internship at NVIDIA Research and a visiting researcher position at UC Berkeley Mechanical Systems Control Lab. His research focuses on bridging robotics, AI, and autonomous mobility, with interests in deep learning, reinforcement learning, generative models, and vision-language models. He has authored 30+ papers in top-tier venues and received the IEEE ITS Best Dissertation Award Finalist and NTU MAE Best PhD Thesis Award.</p>
+          </div>
+        </details>
+        <details class="talk" id="t04242025">
+          <summary>
+            <div class="talk-date"><span>Apr</span><b>24</b></div>
+            <img class="talk-avatar" src="static/speaker/ZidaWuUCLA.jpg" alt="" loading="lazy">
+            <div class="talk-main">
+              <h4>Solving Nash Equilibrium in Large-scale Multi-agent System for Mean Field Game</h4>
+              <p>Zida Wu <span class="dot">·</span> <span class="aff aff-ucla">UCLA</span></p>
+            </div>
+            <span class="talk-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="talk-body">
+            <div class="talk-speaker">
+              <img src="static/speaker/ZidaWuUCLA.jpg" alt="Zida Wu" loading="lazy">
+              <div><strong><a href="https://sites.google.com/g.ucla.edu/zidawu/home" target="_blank" rel="noopener">Zida Wu</a></strong><span>PhD Candidate · Electrical &amp; Computer Engineering, UCLA</span></div>
+            </div>
+            <h5>Abstract</h5>
+            <p>This talk introduces the foundations of game theory and recent advances in solving Nash Equilibria (NE) using reinforcement learning (RL). We discuss how game types extend from two-player to mean field games (MFGs), where solving NE via traditional PDE/HJB approaches becomes intractable. To address this, we present an RL-based framework that minimizes exploitability—a measure of deviation from true NE. We review key methods, including fictitious play and online mirror descent, and conclude with our recent work on a master policy for MFGs that adapts to varying initial distributions and common noise.</p>
+            <h5>About the speaker</h5>
+            <p>Zida Wu is a Ph.D. candidate in Electrical and Computer Engineering at UCLA. His research lies at the intersection of robotics, machine learning, and game theory, with a focus on developing scalable and robust solutions for complex multi-agent systems. His previous work spans estimation, planning, localization, and control. He is deeply passionate about bringing advanced techniques into real-world robotic applications!</p>
+          </div>
+        </details>
+        <details class="talk" id="t04032025">
+          <summary>
+            <div class="talk-date"><span>Apr</span><b>3</b></div>
+            <img class="talk-avatar" src="static/speaker/ZhaoliangZhengUCLA.png" alt="" loading="lazy">
+            <div class="talk-main">
+              <h4>Safer Intersections for Connected Autonomous Driving</h4>
+              <p>Zhaoliang Zheng <span class="dot">·</span> <span class="aff aff-ucla">UCLA</span></p>
+            </div>
+            <span class="talk-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="talk-body">
+            <div class="talk-speaker">
+              <img src="static/speaker/ZhaoliangZhengUCLA.png" alt="Zhaoliang Zheng" loading="lazy">
+              <div><strong><a href="https://zhz03.github.io/" target="_blank" rel="noopener">Zhaoliang Zheng</a></strong><span>PhD Candidate · UCLA Mobility Lab (ECE), UCLA</span></div>
+            </div>
+            <h5>Abstract</h5>
+            <p>In recent years, we have witnessed the rapid advancement of autonomous driving. The development has progressed from modular systems to end-to-end autonomous driving architectures. With the rise of Transformers and large language models, the field is now entering a new phase where world models are playing increasingly important roles. This shift is driven by several factors. For instance, long-tail scenarios and complex urban intersections pose significant challenges due to high traffic density, intricate layouts, and diverse agent behaviors. Intersections, in particular, are critical components of mobility systems—they are central to both traffic modeling and decision-making processes. Beyond technical complexity, intersections also raise major safety concerns. These environments are safety-critical, involving not only vehicles but also pedestrians and vulnerable road users such as cyclists, motorcyclists, and scooter riders. Ensuring both stability and safety in such multifaceted scenarios is paramount. Our goal, therefore, is to provide additional perception redundancies and enhance scenario understanding, enabling autonomous systems to perform more reliably in these challenging conditions.</p>
+            <h5>About the speaker</h5>
+            <p>Please check out his personal website for more info: <a href="https://zhz03.github.io/" target="_blank">Zhaoliang Zheng</a></p>
+          </div>
+        </details>
+        <details class="talk" id="t03132025">
+          <summary>
+            <div class="talk-date"><span>Mar</span><b>13</b></div>
+            <img class="talk-avatar" src="static/speaker/LizhiYangCaltech.jpg" alt="" loading="lazy">
+            <div class="talk-main">
+              <h4>Learning to Walk - Recent Advances in Robot Locomotion</h4>
+              <p>Lizhi Yang <span class="dot">·</span> <span class="aff aff-caltech">Caltech</span></p>
+            </div>
+            <span class="talk-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="talk-body">
+            <div class="talk-speaker">
+              <img src="static/speaker/LizhiYangCaltech.jpg" alt="Lizhi Yang" loading="lazy">
+              <div><strong>Lizhi Yang</strong><span>PhD Candidate · Robotics, Mechanical &amp; Civil Engineering, Caltech</span></div>
+            </div>
+            <h5>Abstract</h5>
+            <p>This talk introduces the development of robot learning for locomotion. It is a brief survey of the continual research thread in the community spanning both model-based and model-free methods. Common tools are also introduced.</p>
+            <h5>About the speaker</h5>
+            <p>Lizhi Yang is a Ph.D. Candidate in MCE at Caltech. His research lies in robot learning and robot safety. His previous works spans reinforcement learning for robot locomotion and safety-critical control. He is passionate about bringing humanoid robots into the wild.</p>
+          </div>
+        </details>
+        <details class="talk" id="t0220025">
+          <summary>
+            <div class="talk-date"><span>Feb</span><b>20</b></div>
+            <img class="talk-avatar" src="static/speaker/ChuweiWangCaltech.png" alt="" loading="lazy">
+            <div class="talk-main">
+              <h4>Beyond Closure Models: Learning Chaotic-Systems via Physics-Informed Neural Operators</h4>
+              <p>Chuwei Wang <span class="dot">·</span> <span class="aff aff-caltech">Caltech</span></p>
+            </div>
+            <span class="talk-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="talk-body">
+            <div class="talk-speaker">
+              <img src="static/speaker/ChuweiWangCaltech.png" alt="Chuwei Wang" loading="lazy">
+              <div><strong><a href="https://cwwangcal.github.io/" target="_blank" rel="noopener">Chuwei Wang</a></strong><span>PhD Student · Computing + Mathematical Sciences, Caltech</span></div>
+            </div>
+            <h5>Abstract</h5>
+            <p>Accurately predicting the long-term behavior of chaotic systems is crucial for various applications such as climate modeling. However, achieving such predictions typically requires iterative computations over a dense spatiotemporal grid to account for the unstable nature of chaotic systems, which is expensive and impractical in many real-world situations. An alternative approach to such a full-resolved simulation is using a coarse grid and then correcting its errors through a <em>closure model</em>, which approximates the overall information from fine scales not captured in the coarse-grid simulation. Recently, ML approaches have been used for closure modeling, but they typically require a large number of training samples from expensive fully-resolved simulations (FRS). In this work, we prove an even more fundamental limitation, i.e., the standard approach to learning closure models suffers from a large approximation error for generic problems, no matter how large the model is, and it stems from the non-uniqueness of the mapping. We propose an alternative end-to-end learning approach using a physics-informed neural operator (PINO) that overcomes this limitation by not using a closure model or a coarse-grid solver. We first train the PINO model on data from a coarse-grid solver and then fine-tune it with (a small amount of) FRS and physics-based losses on a fine grid. The discretization-free nature of neural operators means that they do not suffer from the restriction of a coarse grid that closure models face, and they can provably approximate the long-term statistics of chaotic systems. In our experiments, our PINO model achieves a 330x speedup compared to FRS with a relative error ~10%. In contrast, the closure model coupled with a coarse-grid solver is 60x slower than PINO while having a much higher error ~186% when the closure model is trained on the same FRS dataset.</p>
+            <h5>About the speaker</h5>
+            <p>Chuwei Wang is a PhD student at CMS dept in Caltech.</p>
+          </div>
+        </details>
+        <details class="talk" id="t01232025">
+          <summary>
+            <div class="talk-date"><span>Jan</span><b>23</b></div>
+            <img class="talk-avatar" src="static/speaker/HongkaiZhengCaltech.jpg" alt="" loading="lazy">
+            <div class="talk-main">
+              <h4>Plug-and-Play Diffusion Model for Inverse Problems</h4>
+              <p>Hongkai Zheng <span class="dot">·</span> <span class="aff aff-caltech">Caltech</span></p>
+            </div>
+            <span class="talk-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="talk-body">
+            <div class="talk-speaker">
+              <img src="static/speaker/HongkaiZhengCaltech.jpg" alt="Hongkai Zheng" loading="lazy">
+              <div><strong><a href="https://devzhk.myportfolio.com/" target="_blank" rel="noopener">Hongkai Zheng</a></strong><span>PhD Candidate · Computing + Mathematical Sciences, Caltech</span></div>
+            </div>
+            <h5>Abstract</h5>
+            <p>Inverse problems are fundamental in many domains of science and engineering, where the goal is to infer the unknown source from indirect and noisy observations. These problems are challenging due to their ill-posedness, complexity in the underlying physics, and unknown measurement noise. This talk introduces a general family of probabilistic methods—Plug-and-Play Diffusion Prior (PnPDP) methods—that leverages both data-driven diffusion priors and knowledge of the underlying physics to solve ill-posed inverse problems. We introduce InverseBench, a benchmarking framework designed to evaluate PnPDP approaches in a systematic and easily extensible manner. We discuss experimental observations based on InverseBench, sharing insights into the efficacy and limitations of different PnPDP methods.</p>
+            <h5>About the speaker</h5>
+            <p>Hongkai Zheng is a PhD candidate at Caltech in Computing + Mathematical Sciences advised by Yisong Yue. His research interests lie in the realm of deep generative modeling and inverse problems. He develops scalable and efficient generative models and designs algorithms to solve ill-posed problems in a probabilistic framework.</p>
+          </div>
+        </details>
+        </div>
 
-				<h5 id="10092025"><a href="https://www.jiachenyao.com">Jiachen Yao</a></h5>
-                    <b>Title:</b>Better Inverse Solver by Regularization <br/><br/>
-                    <b>Abstract:</b>  Inverse problems in scientific computing are foundational yet challenging due to high dimensionality, ill-posedness, and uncertainty. Traditional methods like optimization or MCMC often struggle with computational expense and robustness to noise. While generative models have emerged for solving PDEs, they often lack flexibility or stability. Incorporating additional bias or regularization is a powerful strategy for improving both the accuracy and stability of these models. First, we leverage the natural function-space structure of PDE solutions by introducing Function-space Diffusion Posterior Sampling (FunDPS), the first function-space diffusion framework for solving PDE inverse problems. By training unconditional denoisers on functions and applying guidance under theoretical guarantees, FunDPS achieves up to 32% accuracy gains and 25x computational efficiency over grid-based baselines. The architecture also unlocks powerful multi-resolution strategies for further speedups. In addition, we propose an equivariance regularization loss that leverages the inherent symmetries of a physical system. This method guides the diffusion model to generate solutions that more closely adhere to the target distribution, alleviating artifacts introduced by guidance. This regularizer shows consistent improvement on many inverse solvers. In summary, our work demonstrates that integrating specialized regularization is highly effective for generative models in scientific applications. <br/><br/>
-                    <b>Bio:</b> Jiachen Yao is a PhD student at Caltech in Computing + Mathematical Sciences advised by Anima Anandkumar. His research focuses on deep generative modeling and scientific problems, learning strong priors from data and physics to model complex systems.   <br/><br/><br/>
+        <div class="year-head"><h3>2024</h3><span>4 talks</span></div>
+        <div class="talks">
+        <details class="talk" id="t11212024">
+          <summary>
+            <div class="talk-date"><span>Nov</span><b>21</b></div>
+            <img class="talk-avatar" src="static/speaker/SijieJiCaltech.jpg" alt="" loading="lazy">
+            <div class="talk-main">
+              <h4>AI in Practice: Creating Accessible Healthcare via Ubiquitous Computing</h4>
+              <p>Sijie Ji <span class="dot">·</span> <span class="aff aff-caltech">Caltech</span></p>
+            </div>
+            <span class="talk-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="talk-body">
+            <div class="talk-speaker">
+              <img src="static/speaker/SijieJiCaltech.jpg" alt="Sijie Ji" loading="lazy">
+              <div><strong>Sijie Ji</strong><span>Schmidt Science Fellow, Caltech</span></div>
+            </div>
+            <h5>Abstract</h5>
+            <p>The integration of Artificial Intelligence (AI) into healthcare has become a transformative force, reshaping the way medical services are delivered and experienced. A particularly exciting frontier in this domain is the concept of ubiquitous computing, which refers to the seamless integration of advanced computational technologies into everyday environments. By blending the power of AI with the pervasive presence of computing devices, ubiquitous computing offers unprecedented opportunities for making healthcare more accessible, efficient, and personalized.</p>
+            <h5>About the speaker</h5>
+            <p>Dr. Sijie Ji is a Schmidt Science Fellow working at the Division of Engineering and Applied Science, California Institute of Technology, with a joint position at UCLA. She obtained her Ph.D. from Nanyang Technological University, Singapore. Sijie’s research interests span the broad area of sensing, deep learning, ubiquitous computing and their applications in digital healthcare systems, cyber-physical systems (CPS), and next-generation AIoT systems. She was an organizer and PC member for multiple conferences such as SenSys, MobiSys, BuildSys, MobiCom, ICDCS, VTC etc. She is a recipient of N2Women Young Research Fellowship. She was named CPS Rising Star, Singapore 100 Women in Tech.</p>
+          </div>
+        </details>
+        <details class="talk" id="t10312024">
+          <summary>
+            <div class="talk-date"><span>Oct</span><b>31</b></div>
+            <img class="talk-avatar" src="static/speaker/Mickey.jpg" alt="" loading="lazy">
+            <div class="talk-main">
+              <h4>Data driven methods for flow control, sensing and turbulence modeling</h4>
+              <p>Sze Chai (Mickey) Leung <span class="dot">·</span> <span class="aff aff-caltech">Caltech</span></p>
+            </div>
+            <span class="talk-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="talk-body">
+            <div class="talk-speaker">
+              <img src="static/speaker/Mickey.jpg" alt="Sze Chai (Mickey) Leung" loading="lazy">
+              <div><strong>Sze Chai (Mickey) Leung</strong><span>PhD Student · Mechanical &amp; Civil Engineering, Caltech</span></div>
+            </div>
+            <h5>Abstract</h5>
+            <p>Optimal sensor placement (OSP) is critical for efficient, accurate monitoring, control, and inference in complex real-world systems. We propose a machine learning-based feature attribution framework to identify OSP for target predictions. Feature attribution quantifies input contributions to a model’s output and shows promise for OSP. Thus, we develop an attribution-based framework for identifying optimal sensor locations and compared its performance with other existing methods. (Relevant document: <a href="https://arc.aiaa.org/doi/abs/10.2514/6.2024-4148" target="_blank">Integrated Gradients for Optimal Surface Pressure Sensor Placement for Lift Prediction of an Airfoil Subject to Gust</a>.) Subgrid-scale (SGS) models enable large-eddy simulations to perform fluid-dynamic simulations with low computational costs by resolving only the large scales and modeling the SGS effects. We develop a novel sparse nonlinear model for predicting both the SGS stress and the numerical errors produced during the simulations which are often neglected in the other models. Our model shows promising a-posteriori test results, as evidenced by the stabilization of the simulation. (Relevant document: <a href="https://web.stanford.edu/group/ctr/ctrsp24/v04_HUANG.pdf" target="block">Consistent data-driven subgrid-scale model development for large-eddy simulation</a>.)</p>
+            <h5>About the speaker</h5>
+            <p>Sze Chai (Mickey) Leung is a PhD Student at Mechanical and Civil Engineering (MCE) in Caltech.</p>
+          </div>
+        </details>
+        <details class="talk" id="t10172024">
+          <summary>
+            <div class="talk-date"><span>Oct</span><b>17</b></div>
+            <img class="talk-avatar" src="static/speaker/HaowenZhouCaltech.jpg" alt="" loading="lazy">
+            <div class="talk-main">
+              <h4>Computational Microscopy — algorithms driving better microscopes</h4>
+              <p>Haowen Zhou <span class="dot">·</span> <span class="aff aff-caltech">Caltech</span></p>
+            </div>
+            <span class="talk-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="talk-body">
+            <div class="talk-speaker">
+              <img src="static/speaker/HaowenZhouCaltech.jpg" alt="Haowen Zhou" loading="lazy">
+              <div><strong><a href="https://hwzhou2020.github.io" target="_blank" rel="noopener">Haowen Zhou</a></strong><span>PhD Candidate · Biophotonics Lab, Electrical Engineering, Caltech (at time of talk)</span><span class="now">Now: Postdoctoral Scholar, Stanford University</span></div>
+            </div>
+            <h5>Abstract</h5>
+            <p>Over the past century, microscopy has evolved significantly through advances in hardware design. However, pushing the boundaries of imaging performance using purely optical and mechanical innovations has become increasingly challenging. Meanwhile, the rapid growth in computational power has transformed the way we process and analyze imaging data, enabling a paradigm shift in microscopy. By offloading complexity from hardware to algorithms, computational microscopy—a rising interdisciplinary field—offers a powerful approach to simplify system design, correct aberrations, and extract more information from data. In this talk, I will explore how computational techniques can enhance modern imaging systems, with case studies in biological and pathological applications that highlight the potential of this synergistic approach.</p>
+            <h5>About the speaker</h5>
+            <p>Haowen Zhou is a Ph.D. candidate at Department of Electrical Engineering in California Institute of Technology, advised by professor Changhuei Yang. His research focuses on computational microscopy for 2D and 3D imaging, with broad applications in biological and clinical sciences. Haowen received his B.S. degree in Optical Engineering from Huazhong University of Science and Technology, China in 2019, an M.S. degree in Electro-Optics from University of Dayton in 2021, and an M.S. degree in Electrical Engineering from California Institute of Technology in 2024. He is a Gupta Sensing to Intelligence fellow, a 2024 SPIE Optics and Photonics Education Fellow, and a Schmidt Graduate Research Fellow.</p>
+          </div>
+        </details>
+        <details class="talk" id="t10032024">
+          <summary>
+            <div class="talk-date"><span>Oct</span><b>3</b></div>
+            <img class="talk-avatar" src="static/speaker/JiachenYaoCaltech.png" alt="" loading="lazy">
+            <div class="talk-main">
+              <h4>Towards Physics-Inspired Machine Learning</h4>
+              <p>Jiachen Yao <span class="dot">·</span> <span class="aff aff-caltech">Caltech</span></p>
+            </div>
+            <span class="talk-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="talk-body">
+            <div class="talk-speaker">
+              <img src="static/speaker/JiachenYaoCaltech.png" alt="Jiachen Yao" loading="lazy">
+              <div><strong><a href="https://www.jiachenyao.com" target="_blank" rel="noopener">Jiachen Yao</a></strong><span>PhD Student · Computing + Mathematical Sciences, Caltech</span></div>
+            </div>
+            <h5>Abstract</h5>
+            <p>As machine learning shows its capabilities in scientific research, grounding models in physics is essential for achieving robustness and reliable generalization. This talk explores the integration of fundamental physical principles into machine learning frameworks. Physics-Informed Neural Networks (PINNs) embed partial differential equations (PDEs) directly into the neural network's loss function. While promising, PINNs present significant training challenges, particularly in balancing the different loss components, which can prevent convergence. There are novel methods designed to address these challenges. We introduce MultiAdam, a dynamic loss reweighting algorithm that balances different loss terms based on easy-to-access metrics, and CondPINN, a technique that improves the error landscape for more stable convergence by preconditioning. Furthermore, we present PINNacle, a comprehensive benchmark consisting of the evaluation of various PINN methods across a range of physical problems. We hope the research in physics-inspired machine learning can pave the way for AI models capable of simulating diverse physical phenomena, generating novel designs, and advancing scientific discovery.</p>
+            <h5>About the speaker</h5>
+            <p>Jiachen Yao is a PhD student at Caltech in Computing + Mathematical Sciences advised by Anima Anandkumar. His research focuses on deep generative modeling and scientific problems, learning strong priors from data and physics to model complex systems.</p>
+          </div>
+        </details>
+        </div>
+      </div>
+    </section>
 
-				<h5 id="09042025"><a href=" https://idevede.github.io/" target="_block">Defu Cao</a></h5>
-                    <b>Title:</b> Time Series Foundation Models <br/><br/>
-                    <b>Abstract:</b> Recent advancements in foundation models have revolutionized natural language processing and computer vision, but their application to time series data has remained limited. This talk explores the emerging frontier of foundation models for temporal data, highlighting recent breakthroughs that promise to transform time series analysis and forecasting across diverse domains. We begin by examining TEMPO, a novel prompt-based generative pre-trained transformer for time series forecasting. Building on TEMPO's insights, we discuss the latest developments in transformer diffusion architectures like TimeDiT, which push the boundaries of performance in tasks such as imputation, forecasting, and anomaly detection. We explore how these models capture intricate temporal dependencies and generalize across diverse time series data, from weather patterns to financial markets. The talk will cover the challenges and opportunities in scaling these models to larger datasets and more complex temporal phenomena. We'll examine their potential impact on real-world applications in climate science, energy management, healthcare, and finance. Finally, we'll look ahead to future research directions, including multimodal integration and interpretability, that could further expand the capabilities of time series foundation models. <br/><br/>
-                    <b>Bio:</b> Defu Cao is a Ph.D. student in the Thomas Lord Department of Computer Science at the University of Southern California, working with Prof. Yan Liu at the USC Melady Lab. He is also working with Prof. Angela Zhou from USC Marshall Data Sciences and Operations. Prior, he earned his Master’s Degree at the School of EECS Peking University, where he was co-advised by Prof. Xu Cheng and Prof. Xianhua Liu. Cao’s research primarily focuses on developing advanced machine learning and data mining algorithms for structured data, with a particular emphasis on time series foundation models. His work aims to create models that demonstrate a deep understanding of temporal patterns and dynamics in various domains, including spatio-temporal and relational data. To this end, his research aims to integrate causal inference, graph neural networks, spectral domain representation, interpretability, and robustness. In addition, he is also interested in causal representation learning and pre-training large language models. He has published his research in top conference proceedings including NeurIPS, CVPR, ICLR, ICRA, ICDM, and NAACL. <br/><br/><br/>
+    <section id="speakers" class="alt">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">Speakers</span>
+          <h2>Researchers who've shared their work</h2>
+          <p>14 speakers from Caltech, UCLA and USC, spanning generative models, robotics, autonomous driving, scientific ML and healthcare.</p>
+        </div>
+        <div class="speakers">
+        <a class="speaker" href="#t10102025" data-talk="t10102025">
+          <img src="static/speaker/ZeweiZhouUCLA.jpg" alt="Zewei Zhou" loading="lazy">
+          <strong>Zewei Zhou</strong>
+          <span>PhD Candidate</span>
+          <em class="aff aff-ucla">UCLA</em>
+        </a>
+        <a class="speaker" href="#t10092025" data-talk="t10092025">
+          <img src="static/speaker/JiachenYaoCaltech.png" alt="Jiachen Yao" loading="lazy">
+          <strong>Jiachen Yao</strong>
+          <span>PhD Student</span>
+          <em class="aff aff-caltech">Caltech</em>
+        </a>
+        <a class="speaker" href="#t09042025" data-talk="t09042025">
+          <img src="static/speaker/DefuCaoUSC.jpeg" alt="Defu Cao" loading="lazy">
+          <strong>Defu Cao</strong>
+          <span>PhD Student</span>
+          <em class="aff aff-usc">USC</em>
+        </a>
+        <a class="speaker" href="#t05292025" data-talk="t05292025">
+          <img src="static/ucla/ShunYe_UCLA.jpeg" alt="Shun Ye" loading="lazy">
+          <strong>Shun Ye</strong>
+          <span>PhD Candidate</span>
+          <em class="aff aff-ucla">UCLA</em>
+        </a>
+        <a class="speaker" href="#t05222025" data-talk="t05222025">
+          <img src="static/speaker/YaozhongShiCaltech.png" alt="Yaozhong Shi" loading="lazy">
+          <strong>Yaozhong Shi</strong>
+          <span>Postdoctoral Scholar</span>
+          <em class="aff aff-caltech">Caltech</em>
+        </a>
+        <a class="speaker" href="#t05022025" data-talk="t05022025">
+          <img src="static/speaker/ZhiyuHuangUCLA.jpg" alt="Zhiyu Huang" loading="lazy">
+          <strong>Zhiyu Huang</strong>
+          <span>Assistant Professor</span>
+          <em class="aff aff-ncsu">NC State University</em>
+        </a>
+        <a class="speaker" href="#t04242025" data-talk="t04242025">
+          <img src="static/speaker/ZidaWuUCLA.jpg" alt="Zida Wu" loading="lazy">
+          <strong>Zida Wu</strong>
+          <span>PhD Candidate</span>
+          <em class="aff aff-ucla">UCLA</em>
+        </a>
+        <a class="speaker" href="#t04032025" data-talk="t04032025">
+          <img src="static/speaker/ZhaoliangZhengUCLA.png" alt="Zhaoliang Zheng" loading="lazy">
+          <strong>Zhaoliang Zheng</strong>
+          <span>PhD Candidate</span>
+          <em class="aff aff-ucla">UCLA</em>
+        </a>
+        <a class="speaker" href="#t03132025" data-talk="t03132025">
+          <img src="static/speaker/LizhiYangCaltech.jpg" alt="Lizhi Yang" loading="lazy">
+          <strong>Lizhi Yang</strong>
+          <span>PhD Candidate</span>
+          <em class="aff aff-caltech">Caltech</em>
+        </a>
+        <a class="speaker" href="#t0220025" data-talk="t0220025">
+          <img src="static/speaker/ChuweiWangCaltech.png" alt="Chuwei Wang" loading="lazy">
+          <strong>Chuwei Wang</strong>
+          <span>PhD Student</span>
+          <em class="aff aff-caltech">Caltech</em>
+        </a>
+        <a class="speaker" href="#t01232025" data-talk="t01232025">
+          <img src="static/speaker/HongkaiZhengCaltech.jpg" alt="Hongkai Zheng" loading="lazy">
+          <strong>Hongkai Zheng</strong>
+          <span>PhD Candidate</span>
+          <em class="aff aff-caltech">Caltech</em>
+        </a>
+        <a class="speaker" href="#t11212024" data-talk="t11212024">
+          <img src="static/speaker/SijieJiCaltech.jpg" alt="Sijie Ji" loading="lazy">
+          <strong>Sijie Ji</strong>
+          <span>Schmidt Science Fellow</span>
+          <em class="aff aff-caltech">Caltech</em>
+        </a>
+        <a class="speaker" href="#t10312024" data-talk="t10312024">
+          <img src="static/speaker/Mickey.jpg" alt="Sze Chai (Mickey) Leung" loading="lazy">
+          <strong>Sze Chai (Mickey) Leung</strong>
+          <span>PhD Student</span>
+          <em class="aff aff-caltech">Caltech</em>
+        </a>
+        <a class="speaker" href="#t10172024" data-talk="t10172024">
+          <img src="static/speaker/HaowenZhouCaltech.jpg" alt="Haowen Zhou" loading="lazy">
+          <strong>Haowen Zhou</strong>
+          <span>Postdoctoral Scholar</span>
+          <em class="aff aff-stanford">Stanford University</em>
+        </a>
+        </div>
+      </div>
+    </section>
 
-				<h5 id="07032025"> Yizhou Zhang </h5>
-                    <b>Title:</b> Learning to Steer Learners in Games <br/><br/>
-                    <b>Abstract:</b>  We consider the problem of learning to exploit learning algorithms through repeated interactions in games. Specifically, we focus on the case of repeated two player, finite-action games, in which an optimizer aims to steer a no-regret learner to a Stackelberg equilibrium without knowledge of its payoffs. We first show that this is impossible if the optimizer only knows that the learner is using an algorithm from the general class of no-regret algorithms. This suggests that the optimizer requires more information about the learner's objectives or algorithm to successfully exploit them. Building on this intuition, we reduce the problem for the optimizer to that of recovering the learner's payoff structure. We demonstrate the effectiveness of this approach if the learner's algorithm is drawn from a smaller class by analyzing two examples: one where the learner uses an ascent algorithm, and another where the learner uses stochastic mirror ascent with known regularizer and step sizes. <br/><br/>
-                    <b>Bio:</b> Yizhou Zhang is a PhD student at CMS dept in Caltech.  <br/><br/><br/>
+    <section class="cta" id="contact">
+      <div class="wrap">
+        <div class="reveal">
+          <span class="eyebrow" style="color:#9fcdf5">Get involved</span>
+          <h2>Let's build the AI community together</h2>
+          <p>Organizing a workshop, interested in speaking at a meetup, or looking to connect with researchers? We'd love to hear from you. Feel free to forward this to anyone who might be interested.</p>
+          <a class="btn btn-light" href="mailto:mjiajing@gmail.com?subject=Hello%20AIX">Contact Jiajing Mao</a>
+        </div>
+        <ul class="reveal">
+          <li><b>Sponsor a workshop</b><span>Challenge awards, speaker dinners and community events.</span></li>
+          <li><b>Give a talk</b><span>Present your research at an AIX lunch meetup.</span></li>
+          <li><b>Host a meetup</b><span>Bring AIX to your campus or lab.</span></li>
+        </ul>
+      </div>
+    </section>
+  </main>
 
-	    	    <h5 id="05292025"><a href="https://www.linkedin.com/in/ebot/" target="_block">Shun Ye</a></h5>
-                    <b>Title:</b> Breaking into Academic Startups and Entrepreneur Ventures <br/><br/>
-                    <b>Abstract:</b> Translating research into real-world solutions has been the core theme of my work at the intersection of biomedical engineering, microfluidics, AI, and point-of-care diagnostics. In this talk, I will share my journey developing automated biomedical devices, from lab prototypes to market-oriented technologies. I will also provide an overview of common fundraising pathways for academic entrepreneurs, including angel investors, friends and family rounds, venture capital, and strategic collaborations with industry partners. To ground the discussion, I will present my latest startup effort: developing a <a href="https://www.linkedin.com/company/ebot-bio/" target="_block">Miniature AI Robot Scientist</a>, designed to automate the full experimental workflow on a single benchtop. This compact, intelligent system aims to streamline R&D processes for small labs and early-stage biotech teams. Finally, I will reflect on the unique advantages and inherent challenges of launching a startup from an academic setting—balancing innovation, resource constraints, and the steep learning curve of entrepreneurship. <br/><br/>
-                    <b>Bio:</b>  Shun Ye is the Founder of eBot Bio, which aims to cut R&D costs by 95%. He is also a PhD Candidate in the Bioengineering and Electrical Engineering departments and California NanoSystems Institute (CNSI) at UCLA. Before joining UCLA, he earned a Master's degree in Biomedical Engineering from Penn State University and completed a research fellowship in Analytical Microfluidics at the Chinese Academy of Sciences. Shun has six years of experience in biomedical instrumentation, automation, and AI. He has eight journal publications and four issued patents. He developed the OsciDrop technology, which was featured as a cover article in Analytical Chemistry and has been commercialized as the world's first all-in-one, automatic, chip-free digital PCR machine (D600, Maccura Biotech Co., Ltd.), with six fluorescent channels, and has received $20M in Venture Capital. He is currently co-supervised by pioneering medical device scholars Prof. Dino Di Carlo and Aydogan Ozcan. His doctoral research focuses on developing and translating novel biomedical devices and micro/nanotechnologies for AI-powered lab automation, point-of-care diagnostics, and other industry and clinical applications.  <br/><br/><br/>
-	    
-	            <h5 id="05222025">Yaozhong Shi </h5>
-                    <b>Title:</b> Stochastic Process Learning via Operator Flow Matching <br/><br/>
-                    <b>Abstract:</b> This talk begins by demonstrating how traditional generative models, specifically diffusion and flow-matching methods, can be lifted from finite-dimensional settings to infinite-dimensional function spaces. Building on flow matching formulated in Hilbert space, it then shows how Gaussian process regression can be generalised to full stochastic-process regression. The talk concludes with an overview of the latest neural-operator architectures designed for efficient learning on irregular grids. Relevant papers are <a href="https://arxiv.org/abs/2501.04126" target="_block">Stochastic Process Learning via Operator Flow Matching</a>  and <a href="https://www.arxiv.org/abs/2506.16656" target="_block">Mesh-Informed Neural Operator : A Transformer Generative Approach</a>. <br/><br/>
-                    <b>Bio:</b> Yaozhong Shi is a PhD student at Mechanical Eningeering (ME) in Caltech.  <br/><br/><br/>
-
-	    	    <h5 id="05022025"><a href="https://mczhi.github.io/" target="_block">Zhiyu Huang</a></h5>
-                    <b>Title:</b> Scalable, Learnable, and Interactive Autonomous Driving Systems <br/><br/>
-                    <b>Abstract:</b> This talk presents a series of learning-based frameworks for interactive and scalable decision-making in autonomous driving. We begin with Differentiable Integrated Prediction and Planning (DIPP), which couples prediction and planning in a differentiable architecture to enable planning-aware predictions. Building upon this, GameFormer introduces a level-k game-theoretic modeling approach using Transformers to capture mutual interactions among agents. DTPP (Differentiable Conditional Prediction and Cost Evaluation for Tree Policy Planning) leverages a structured tree-based planner with jointly learnable prediction and cost modules, allowing more efficient and human-aligned decisions. Finally, GenDrive applies diffusion models for generative driving policy learning, further enhancing flexibility and robustness. These frameworks demonstrate how principled integration of deep learning, game theory, and generative modeling can advance decision-making capabilities in complex autonomous driving environments. <br/><br/>
-                    <b>Bio:</b> Dr. Zhiyu Huang is currently a Postdoctoral Scholar at the UCLA Mobility Lab. He received his Ph.D. from Nanyang Technological University (NTU), working in the AutoMan Research Lab. His previous experience includes a research internship at NVIDIA Research and a visiting researcher position at UC Berkeley Mechanical Systems Control Lab. His research focuses on bridging robotics, AI, and autonomous mobility, with interests in deep learning, reinforcement learning, generative models, and vision-language models. He has authored 30+ papers in top-tier venues and received the IEEE ITS Best Dissertation Award Finalist and NTU MAE Best PhD Thesis Award.  <br/><br/><br/>
-
-	            <h5 id="04242025"><a href="https://sites.google.com/g.ucla.edu/zidawu/home" target="_block">Zida Wu</a></h5>
-                    <b>Title:</b> Solving Nash Equilibrium in Large-scale Multi-agent System for Mean Field Game <br/><br/>
-                    <b>Abstract:</b> This talk introduces the foundations of game theory and recent advances in solving Nash Equilibria (NE) using reinforcement learning (RL). We discuss how game types extend from two-player to mean field games (MFGs), where solving NE via traditional PDE/HJB approaches becomes intractable. To address this, we present an RL-based framework that minimizes exploitability—a measure of deviation from true NE. We review key methods, including fictitious play and online mirror descent, and conclude with our recent work on a master policy for MFGs that adapts to varying initial distributions and common noise. <br/><br/>
-                    <b>Bio:</b> Zida Wu is a Ph.D. candidate in Electrical and Computer Engineering at UCLA. His research lies at the intersection of robotics, machine learning, and game theory, with a focus on developing scalable and robust solutions for complex multi-agent systems. His previous work spans estimation, planning, localization, and control. He is deeply passionate about bringing advanced techniques into real-world robotic applications! <br/><br/><br/>
-
-	    	    <h5 id="04032025"><a href="https://zhz03.github.io/" target="_block">Zhaoliang Zheng</a></h5>
-                    <b>Title:</b> Safer Intersections for Connected Autonomous Drving <br/><br/>
-                    <b>Abstract:</b> In recent years, we have witnessed the rapid advancement of autonomous driving. The development has progressed from modular systems to end-to-end autonomous driving architectures. With the rise of Transformers and large language models, the field is now entering a new phase where world models are playing increasingly important roles. This shift is driven by several factors. For instance, long-tail scenarios and complex urban intersections pose significant challenges due to high traffic density, intricate layouts, and diverse agent behaviors. Intersections, in particular, are critical components of mobility systems—they are central to both traffic modeling and decision-making processes. Beyond technical complexity, intersections also raise major safety concerns. These environments are safety-critical, involving not only vehicles but also pedestrians and vulnerable road users such as cyclists, motorcyclists, and scooter riders. Ensuring both stability and safety in such multifaceted scenarios is paramount. Our goal, therefore, is to provide additional perception redundancies and enhance scenario understanding, enabling autonomous systems to perform more reliably in these challenging conditions. <br/><br/>
-                    <b>Bio:</b> Please check out his personal website for more info: <a href="https://zhz03.github.io/" target="_block">Zhaoliang Zheng</a> <br/><br/><br/>
-	    
-	            <h5 id="03132025">Lizhi Yang </h5>
-                    <b>Title:</b> Learning to Walk - Recent Advances in Robot Locomotion <br/><br/>
-                    <b>Abstract:</b> This talk introduces the development of robot learning for locomotion. It is a brief survey of the continual research thread in the community spanning both model-based and model-free methods. Common tools are also introduced. <br/><br/>
-                    <b>Bio:</b> Lizhi Yang is a Ph.D. Candidate in MCE at Clatech. His research lies in robot learning and robot safety. His previous works spans reinforcement learning for robot locomotion and safety-critical control. He is passionate about bringing humanoid robots into the wild.  <br/><br/><br/>
-
-	    	    <h5 id="0220025"><a href="https://hwzhou2020.github.io" target="_block">Chuwei Wang</a></h5>
-                    <b>Title:</b> Beyond Closure Models: Learning Chaotic-Systems vis Physics-Informed Neural Operators <br/><br/>
-                    <b>Abstract:</b> Accurately predicting the long-term behavior of chaotic systems is crucial for various applications such as climate modeling. However, achieving such predictions typically requires iterative computations over a dense spatiotemporal grid to account for the unstable nature of chaotic systems, which is expensive and impractical in many real-world situations. An alternative approach to such a full-resolved simulation is using a coarse grid and then correcting its errors through a \textit{closure model}, which approximates the overall information from fine scales not captured in the coarse-grid simulation. Recently, ML approaches have been used for closure modeling, but they typically require a large number of training samples from expensive fully-resolved simulations (FRS). In this work, we prove an even more fundamental limitation, i.e., the standard approach to learning closure models suffers from a large approximation error for generic problems, no matter how large the model is, and it stems from the non-uniqueness of the mapping. We propose an alternative end-to-end learning approach using a physics-informed neural operator (PINO) that overcomes this limitation by not using a closure model or a coarse-grid solver. We first train the PINO model on data from a coarse-grid solver and then fine-tune it with (a small amount of) FRS and physics-based losses on a fine grid. The discretization-free nature of neural operators means that they do not suffer from the restriction of a coarse grid that closure models face, and they can provably approximate the long-term statistics of chaotic systems. In our experiments, our PINO model achieves a 330x speedup compared to FRS with a relative error ~10%. In contrast, the closure model coupled with a coarse-grid solver is 60x slower than PINO while having a much higher error ~186% when the closure model is trained on the same FRS dataset. <br/><br/>
-                    <b>Bio:</b> Chuwei Wang is a PhD student at CMS dept in Caltech. <br/><br/><br/>
-
-	            <h5 id="01232025"><a href="https://devzhk.myportfolio.com/" target="_block">Hongkai Zheng</a></h5>
-                    <b>Title:</b> Plug-and-Play Diffusion Model for Inverse Problems <br/><br/>
-                    <b>Abstract:</b> Inverse problems are fundamental in many domains of science and engineering, where the goal is to infer the unknown source from indirect and noisy observations. These problems are challenging due to their ill-posedness, complexity in the underlying physics, and unknown measurement noise. This talk introduces a general family of probabilistic methods—Plug-and-Play Diffusion Prior (PnPDP) methods—that leverages both data-driven diffusion priors and knowledge of the underlying physics to solve ill-posed inverse problems. We introduce InverseBench, a benchmarking framework designed to evaluate PnPDP approaches in a systematic and easily extensible manner. We discuss experimental observations based on InverseBench, sharing insights into the efficacy and limitations of different PnPDP methods. <br/><br/>
-                    <b>Bio:</b> Hongkai Zheng is a PhD candidate at Caltech in Computing + Mathematical Sciences advised by Yisong Yue. His research interests lie in the realm of deep generative modeling and inverse problems. He develops scalable and efficient generative models and designs algorithms to solve ill-posed problems in a probabilistic framework. <br/><br/><br/>
-
-	    	    <h5 id="11212024">Sijie Ji </h5>
-                    <b>Title:</b> AI in Practice: Creating Accessible Healthcare via Ubiquitous Computing <br/><br/>
-                    <b>Abstract:</b> The integration of Artificial Intelligence (AI) into healthcare has become a transformative force, reshaping the way medical services are delivered and experienced. A particularly exciting frontier in this domain is the concept of ubiquitous computing, which refers to the seamless integration of advanced computational technologies into everyday environments. By blending the power of AI with the pervasive presence of computing devices, ubiquitous computing offers unprecedented opportunities for making healthcare more accessible, efficient, and personalized. <br/><br/>
-                    <b>Bio:</b> Dr. Sijie Ji is a Schmidt Science Fellow working at the Division of Engineering and Applied Science, California Institute of Technology, with a joint position at UCLA. She obtained her Ph.D. from Nanyang Technological University, Singapore. Sijie’s research interests span the broad area of sensing, deep learning, ubiquitous computing and their applications in digital healthcare systems, cyber-physical systems (CPS), and next-generation AIoT systems. She was an organizer and PC member for multiple conferences such as SenSys, MobiSys, BuildSys, MobiCom, ICDCS, VTC etc. She is a recipient of N2Women Young Research Fellowship. She was named CPS Rising Star, Singapore 100 Women in Tech.  <br/><br/><br/>
-	    
-	            <h5 id="10312024">Sze Chai (Mickey) Leung </h5>
-                    <b>Title:</b> Data driven methods for flow control, sensing and turbulence modeling <br/><br/>
-                    <b>Abstract:</b> Optimal sensor placement (OSP) is critical for efficient, accurate monitoring, control, and inference in complex real-world systems. We propose a machine learning-based feature attribution framework to identify OSP for target predictions. Feature attribution quantifies input contributions to a model’s output and shows promise for OSP. Thus, we develop an attribution-based framework for identifying optimal sensor locations and compared its performance with other existing methods. (Relevant document: <a href="https://arc.aiaa.org/doi/abs/10.2514/6.2024-4148" target="_block">Integrated Gradients for Optimal Surface Pressure Sensor Placement for Lift Prediction of an Airfoil Subject to Gust</a>.) Subgrid-scale (SGS) models enable large-eddy simulations to perform fluid-dynamic simulations with low computational costs by resolving only the large scales and modeling the SGS effects. We develop a novel sparse nonlinear model for predicting both the SGS stress and the numerical errors produced during the simulations which are often neglected in the other models. Our model shows promising a-posteriori test results, as evidenced by the stabilization of the simulation. (Relevant document: <a href="https://web.stanford.edu/group/ctr/ctrsp24/v04_HUANG.pdf" target="block">Consistent data-driven subgrid-scale modeldevelopment for large-eddy simulation</a>.) <br/><br/>
-                    <b>Bio:</b> Sze Chai (Mickey) Leung is a PhD Student at Mechanical and Civil Engineering (MCE) in Caltech. <br/><br/><br/>
-
-	    	    <h5 id="10172024"><a href="https://cwwangcal.github.io/" target="_block">Haowen Zhou</a></h5>
-                    <b>Title:</b> Computational Microscopy -- algorithms driving better microscopes <br/><br/>
-                    <b>Abstract:</b> Over the past century, microscopy has evolved significantly through advances in hardware design. However, pushing the boundaries of imaging performance using purely optical and mechanical innovations has become increasingly challenging. Meanwhile, the rapid growth in computational power has transformed the way we process and analyze imaging data, enabling a paradigm shift in microscopy. By offloading complexity from hardware to algorithms, computational microscopy—a rising interdisciplinary field—offers a powerful approach to simplify system design, correct aberrations, and extract more information from data. In this talk, I will explore how computational techniques can enhance modern imaging systems, with case studies in biological and pathological applications that highlight the potential of this synergistic approach. <br/><br/>
-                    <b>Bio:</b> Haowen Zhou is a Ph.D. candidate at Department of Electrical Engineering in California Institute of Technology, advised by professor Changhuei Yang. His research focuses on computational microscopy for 2D and 3D imaging, with broad applications in biological and clinical sciences. Haowen received his B.S. degree in Optical Engineering from Huazhong University of Science and Technology, China in 2019, an M.S. degree in Electro-Optics from University of Dayton in 2021, and an M.S. degree in Electrical Engineering from California Institute of Technology in 2024. He is a Gupta Sensing to Intelligence fellow, a 2024 SPIE Optics and Photonics Education Fellow, and a Schmidt Graduate Research Fellow. <br/><br/><br/>
-
-	            <h5 id="10032024"><a href="https://www.jiachenyao.com">Jiachen Yao</a></h5>
-                    <b>Title:</b> Towards Physics-Inspired Machine Learning <br/><br/>
-                    <b>Abstract:</b> As machine learning shows its capabilities in scientific research, grounding models in physics is essential for achieving robustness and reliable generalization. This talk explores the integration of fundamental physical principles into machine learning frameworks. Physics-Informed Neural Networks (PINNs) embed partial differential equations (PDEs) directly into the neural network's loss function. While promising, PINNs present significant training challenges, particularly in balancing the different loss components, which can prevent convergence. There are novel methods designed to address these challenges. We introduce MultiAdam, a dynamic loss reweighting algorithm that balances different loss terms based on easy-to-access metrics, and CondPINN, a technique that improves the error landscape for more stable convergence by preconditioning. Furthermore, we present PINNacle, a comprehensive benchmark consisting of the evaluation of various PINN methods across a range of physical problems. We hope the research in physics-inspired machine learning can pave the way for AI models capable of simulating diverse physical phenomena, generating novel designs, and advancing scientific discovery. <br/><br/>
-                    <b>Bio:</b> Jiachen Yao is a PhD student at Caltech in Computing + Mathematical Sciences advised by Anima Anandkumar. His research focuses on deep generative modeling and scientific problems, learning strong priors from data and physics to model complex systems.   <br/><br/><br/>
-
+  <footer>
+    <div class="wrap">
+      <a class="brand" href="#top"><img src="static/aix/aix-256.png" alt="">AIX</a>
+      <span>© <span id="year">2026</span> AIX: Academia-Industry X · <a href="mailto:mjiajing@gmail.com">mjiajing@gmail.com</a></span>
+      <span>Event stock photos via <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></span>
     </div>
-		
-    <br/>
-		
-   <!--
-    <div id="organizer" class="container" align="justify">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 thumb">
-                <h4>Organizers</h4>
-                <hr>
-            </div>
-        </div>
-        <h5>General Chairs & Local Chairs @ Caltech</h5>
-	<div class="row">
-        	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb">
-                    <figure style="margin: auto;" class="rounded">
-                       <a href="https://www.linkedin.com/in/jiajing-mao/" target="_block">
-                           <img src="https://media.licdn.com/dms/image/v2/C5603AQGg7uYqkugZCw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1654811994850?e=1756339200&v=beta&t=NDunwlYHtIaNH7G8AKIqU8Vs1j0NQaHnIIIWI2FtF_A" class="img-fluid mx-auto d-block" style="margin-top:-15px"/>
-                       </a>
-                    </figure>
-                    <p class="text-center caption"><b><a href="https://www.linkedin.com/in/jiajing-mao/" target="_block">Jiajing Mao</a></b></p>
-                    <p class="text-center caption caption-role"><b>Founder</b></p>
-                    <p class="text-center caption caption-loc"><i>AIX</i></p>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb">
-                    <figure style="margin: auto;" class="rounded">
-                       <a href="https://www.gzy.red/" target="_block">
-                           <img src="https://media.licdn.com/dms/image/v2/D5603AQFAuEVw2smkXw/profile-displayphoto-shrink_400_400/B56Zd4SKBRHUAg-/0/1750069715332?e=1756339200&v=beta&t=gL7e_GbxYvQl5kLSYV9dXmEy6iJnZaUFD5k4C3_Ww3M" class="img-fluid mx-auto d-block" style="margin-top:-15px"/>
-                       </a>
-                    </figure>
-                    <p class="text-center caption"><b><a href="https://www.gzy.red/" target="_block">Zhiyuan Gao</a></b></p>
-                    <p class="text-center caption caption-role"><b>PhD Student</b></p>
-                    <p class="text-center caption caption-role"><b>EAS (EE)</b></p>
-                    <p class="text-center caption caption-loc"><i>Caltech</i></p>
-        	</div>
-        </div>
-        <br/><br/>
-        <h5>Local Chairs @ UCLA</h5>
-	<div class="row">
-        	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb">
-                    <figure style="margin: auto;" class="rounded">
-                       <a href="https://handsomeyun.github.io/" target="_block">
-                           <img src="https://handsomeyun.github.io/assets/img/prof_pic-480.webp" class="img-fluid mx-auto d-block" style="margin-top:-15px"/>
-                       </a>
-                    </figure>
-                    <p class="text-center caption"><b><a href="https://handsomeyun.github.io/" target="_block">Yun Zhang</a></b></p>
-                    <p class="text-center caption caption-role"><b>PhD Student</b></p>
-		    <p class="text-center caption caption-role"><b>UCLA Mobility Lab</b></p>
-                    <p class="text-center caption caption-loc"><i>UCLA</i></p>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb">
-                    <figure style="margin: auto;" class="rounded">
-                       <a href="https://github.com/zhz03" target="_block">
-                           <img src="https://avatars.githubusercontent.com/u/60384224?v=4" class="img-fluid mx-auto d-block" style="margin-top:-15px"/>
-                       </a>
-                    </figure>
-                    <p class="text-center caption"><b><a href="https://github.com/zhz03" target="_block">Zhaoliang Zhao</a></b></p>
-                    <p class="text-center caption caption-role"><b>PhD Student</b></p>
-                    <p class="text-center caption caption-role"><b>UCLA Mobility Lab</b></p>
-                    <p class="text-center caption caption-loc"><i>UCLA</i></p>
-        	</div>
-        </div>
-        <br/><br/>
-	<h5>Local Chairs @ UCSD</h5>
-	<div class="row">
-        	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb">
-                    <figure style="margin: auto;" class="rounded">
-                       <a href="https://snyhlxde1.github.io/" target="_block">
-                           <img src="https://media.licdn.com/dms/image/v2/D5603AQH03oldqbmj9Q/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1632352636911?e=1756339200&v=beta&t=iKwXa6oE-jIeETf8ltVJgDdspYP753Sg4_GEd8o5ifU" class="img-fluid mx-auto d-block" style="margin-top:-15px"/>
-                       </a>
-                    </figure>
-                    <p class="text-center caption"><b><a href="https://snyhlxde1.github.io/" target="_block">Lanxiang Hu</a></b></p>
-                    <p class="text-center caption caption-role"><b>PhD Student</b></p>
-		    <p class="text-center caption caption-role"><b>UCSD Hao AI Lab</b></p>
-                    <p class="text-center caption caption-loc"><i>UCSD</i></p>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb">
-                    <figure style="margin: auto;" class="rounded">
-                       <a href="https://gindachen.github.io/" target="_block">
-                           <img src="https://avatars.githubusercontent.com/u/32371474?v=4" class="img-fluid mx-auto d-block" style="margin-top:-15px"/>
-                       </a>
-                    </figure>
-                    <p class="text-center caption"><b><a href="https://gindachen.github.io/" target="_block">Junda Chen</a></b></p>
-                    <p class="text-center caption caption-role"><b>PhD Student</b></p>
-                    <p class="text-center caption caption-role"><b>UCSD Hao AI Lab</b></p>
-                    <p class="text-center caption caption-loc"><i>UCSD</i></p>
-        	</div>
-        </div>
-        <br/><br/>
-	<h5>Local Chairs @ USC</h5>
-	<div class="row">
-        	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb">
-                    <figure style="margin: auto;" class="rounded">
-                       <a href="https://www.linkedin.com/in/zhiwei-deng-bb4bb3191/" target="_block">
-                           <img src="https://media.licdn.com/dms/image/v2/C5603AQEFW3kYWULIDA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1654890948434?e=1756339200&v=beta&t=_4tJk0CtkU7iI5QEKsLQhcbHo2d1wLj0JT-6ZXVpRT4" class="img-fluid mx-auto d-block" style="margin-top:-15px"/>
-                       </a>
-                    </figure>
-                    <p class="text-center caption"><b><a href="https://www.linkedin.com/in/zhiwei-deng-bb4bb3191/" target="_block">Zhiwei Deng</a></b></p>
-                    <p class="text-center caption caption-role"><b>PhD Student</b></p>
-		    <p class="text-center caption caption-role"><b>Laboratory of Neuro Imaging</b></p>
-                    <p class="text-center caption caption-loc"><i>USC</i></p>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb">
-                    <figure style="margin: auto;" class="rounded">
-                       <a href="https://idevede.github.io/" target="_block">
-                           <img src="https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=fHCd9MsAAAAJ&citpid=9" class="img-fluid mx-auto d-block" style="margin-top:-15px"/>
-                       </a>
-                    </figure>
-                    <p class="text-center caption"><b><a href="https://idevede.github.io/" target="_block">Defu Cao</a></b></p>
-                    <p class="text-center caption caption-role"><b>PhD Student</b></p>
-                    <p class="text-center caption caption-role"><b>USC Melady Lab</b></p>
-                    <p class="text-center caption caption-loc"><i>USC</i></p>
-        	</div>
-        </div>
-    </div>
-    -->
-    
-    <br/><br/>
-    
-    <div id="contact" class="container" align="justify">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 thumb">
-                <h4>Contact</h4>
-                <hr>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 thumb">
-                <p>
-                    <!--
-			Please feel free to forward this message to those who might be interested. If you have questions, please contact us at <a href="mailto:aix.foundation.2025@gmail.com">aix.foundation.2025@gmail.com</a>.
-                    -->
-			Please feel free to forward this message to those who might be interested. If you have questions, please contact us at <a href="mailto:mjiajing@gmail.com">Jiajing Mao</a>.
-                </p>
-            </div>
-        </div>
-    </div>
+  </footer>
 
-    <br/>
-    <br/>
-    <hr>
+  <script>
+    (function () {
+      var nav = document.getElementById('nav');
+      var links = document.getElementById('navLinks');
+      var btn = document.getElementById('menuBtn');
+      document.getElementById('year').textContent = new Date().getFullYear();
+      window.addEventListener('scroll', function () { nav.classList.toggle('scrolled', window.scrollY > 8); }, { passive: true });
+      btn.addEventListener('click', function () {
+        var open = links.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open);
+      });
+      links.addEventListener('click', function (e) { if (e.target.tagName === 'A') links.classList.remove('open'); });
 
-    <div class="container footer">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 thumb">
-                <p align="left">
-                    Copyright &copy; AIX: Academia-Industry X <br/>
-                    <!--
-			Copyright &copy; AIX Foundation 2025 <br/>
-		    -->
-                    Last Updated: July 2, 2025
-                </p>
-            </div>
-        </div>
-    </div>
-    
+      // Clicking a speaker card opens their talk
+      document.querySelectorAll('.speaker').forEach(function (a) {
+        a.addEventListener('click', function () {
+          var t = document.getElementById(a.dataset.talk);
+          if (t) t.open = true;
+        });
+      });
+      // Open a talk if linked directly (e.g. #t10102025)
+      if (location.hash) { var t = document.querySelector(location.hash); if (t && t.tagName === 'DETAILS') t.open = true; }
+
+      // Highlight current section in nav
+      var sections = ['about', 'activities', 'meetups', 'speakers', 'contact'].map(function (id) { return document.getElementById(id); });
+      var navA = links.querySelectorAll('a');
+      if ('IntersectionObserver' in window) {
+        var spy = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting) navA.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + en.target.id); });
+          });
+        }, { rootMargin: '-45% 0px -50% 0px' });
+        sections.forEach(function (s) { spy.observe(s); });
+
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+      } else {
+        document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+      }
+    })();
+  </script>
 </body>
-    
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-    
 </html>
