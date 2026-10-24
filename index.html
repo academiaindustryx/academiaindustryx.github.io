@@ -180,6 +180,22 @@
     @media (max-width: 960px) { .events { grid-template-columns: 1fr 1fr; } .event.wide { grid-column: span 2; } }
     @media (max-width: 640px) { .events { grid-template-columns: 1fr; } .event.wide { grid-column: auto; } .event.wide .ev-title { font-size: 36px; } .event { min-height: 0; padding: 24px 22px 22px; } .ev-year { font-size: 110px; } }
 
+    /* Founder */
+    .team-card { display: grid; grid-template-columns: 180px 1fr; gap: 40px; align-items: center; max-width: 920px; background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 36px 40px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+    .team-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: linear-gradient(180deg, var(--navy), var(--sky)); }
+    .team-photo { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 6px #fff, 0 0 0 7px var(--line); }
+    .team-photo.ini { display: grid; place-items: center; background: linear-gradient(140deg, var(--navy), var(--sky)); color: #fff; font-family: var(--display); font-weight: 800; font-size: 56px; letter-spacing: -0.02em; }
+    .team-info h3 { font-size: 28px; margin-bottom: 4px; }
+    .team-title { font-weight: 600; color: var(--navy); margin: 0 0 14px; }
+    .team-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .team-chips span { font-size: 13px; font-weight: 500; padding: 5px 12px; border-radius: 999px; background: var(--sky-soft); color: var(--navy); }
+    .team-chips b { font-weight: 700; }
+    .team-info p { margin: 0 0 18px; color: var(--muted); }
+    .team-links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .team-links a { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14px; text-decoration: none; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); color: var(--navy); transition: background .2s, border-color .2s; }
+    .team-links a:hover { background: var(--sky-soft); border-color: transparent; color: var(--navy); }
+    @media (max-width: 640px) { .team-card { grid-template-columns: 1fr; gap: 22px; padding: 28px 22px; text-align: center; } .team-photo { width: 132px; height: 132px; margin: 0 auto; } .team-photo.ini { font-size: 42px; } .team-chips, .team-links { justify-content: center; } }
+
     /* Meetups */
     .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 64px; }
     .gallery figure { margin: 0; position: relative; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
@@ -292,6 +308,7 @@
         <li><a href="#activities">Activities</a></li>
         <li><a href="#meetups">Meetups</a></li>
         <li><a href="#speakers">Speakers</a></li>
+        <li><a href="#founder">Founder</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <a class="btn btn-primary" href="mailto:jiajing@kylinai.tech?subject=Partnering%20with%20AIX">Partner with us</a>
@@ -917,6 +934,25 @@
       </div>
     </section>
 
+    <section id="founder">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">Founder</span>
+          <h2>Meet the founder</h2>
+        </div>
+        <article class="team-card reveal">
+          <img class="team-photo" src="static/aix/jiajing-mao.jpg" alt="Jiajing Mao">
+          <div class="team-info">
+            <h3>Jiajing Mao</h3>
+            <p class="team-title">Founder &amp; Lead Organizer, AIX</p>
+            <div class="team-chips"><span><b>Kylin AI</b> · Research Scientist</span><span><b>Caltech</b> · PhD, Physics</span></div>
+            <p>Jiajing Mao is the founder and lead organizer of AIX and a Research Scientist at Kylin AI. She holds a PhD in Physics from Caltech. She started AIX in 2024 to bring academic researchers and industry practitioners together through workshops, dinners and research meetups.</p>
+            <div class="team-links"><a href="https://www.linkedin.com/in/jiajing-mao/" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a><a href="mailto:jiajing@kylinai.tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7 10-7"/></svg>jiajing@kylinai.tech</a></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section class="cta" id="contact">
       <div class="wrap">
         <div class="reveal">
@@ -966,7 +1002,7 @@
       if (location.hash) { var t = document.querySelector(location.hash); if (t && t.tagName === 'DETAILS') t.open = true; }
 
       // Highlight current section in nav
-      var sections = ['about', 'activities', 'meetups', 'speakers', 'contact'].map(function (id) { return document.getElementById(id); });
+      var sections = ['about', 'activities', 'meetups', 'speakers', 'founder', 'contact'].map(function (id) { return document.getElementById(id); });
       var navA = links.querySelectorAll('a');
       if ('IntersectionObserver' in window) {
         var spy = new IntersectionObserver(function (entries) {
