@@ -158,9 +158,9 @@
     .chip.role { background: rgba(255,255,255,.92); color: var(--c1); border-color: transparent; }
     .ev-title { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 3.4vw, 44px); line-height: 1.02; letter-spacing: -0.02em; color: #fff; margin: 0 0 10px; }
     .ev-title span { display: inline-block; background: linear-gradient(90deg, #fff, var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .event.wide .ev-title { font-size: clamp(34px, 4.6vw, 60px); }
-    .event:not(.wide) .ev-title { font-size: clamp(30px, 3vw, 38px); }
-    .event:not(.wide) .ev-title span { display: block; }
+    .event.wide .ev-title, .event.full .ev-title { font-size: clamp(34px, 4.6vw, 60px); }
+    .event:not(.wide):not(.full) .ev-title { font-size: clamp(30px, 3vw, 38px); }
+    .event:not(.wide):not(.full) .ev-title span { display: block; }
     .ev-full { font-size: 15px; color: rgba(255,255,255,.78); margin: 0 0 24px; max-width: 520px; }
     .ev-people { margin-top: auto; }
     .avatars { display: flex; margin-bottom: 12px; }
@@ -177,9 +177,21 @@
     .ev-neurips { --c1: #1a0f3d; --c2: #6a42b0; --glow: rgba(200,150,255,.5); --accent: #dcc4ff; }
     .ev-texas { --c1: #3b140a; --c2: #c25a0a; --glow: rgba(255,190,110,.5); --accent: #ffd6a3; }
     .ev-socal { --c1: #062f45; --c2: #138aa8; --glow: rgba(110,235,240,.45); --accent: #b4f3f5; }
-    @media (max-width: 960px) { .events { grid-template-columns: 1fr 1fr; } .event.wide { grid-column: span 2; } }
-    @media (max-width: 640px) { .events { grid-template-columns: 1fr; } .event.wide { grid-column: auto; } .event.wide .ev-title { font-size: 36px; } .event { min-height: 0; padding: 24px 22px 22px; } .ev-year { font-size: 110px; } }
+    .event.full { grid-column: 1 / -1; min-height: 0; }
+    .ev-caltech { --c1: #1a0e06; --c2: #d9560a; --glow: rgba(255,150,60,.6); --accent: #ffc18a; }
+    .chip.hot { background: #ff6b0a; border-color: #ff6b0a; color: #fff; }
+    .ev-link.solid { background: #fff; color: #b8470a; border-color: #fff; }
+    .ev-link.solid:hover { background: #ffe6d4; color: #b8470a; }
+    .ev-foot.split { justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .ev-note { font-size: 13.5px; color: rgba(255,255,255,.8); }
+    .ev-note b { color: var(--accent); }
+    @media (max-width: 960px) { .events { grid-template-columns: 1fr 1fr; } .event.wide { grid-column: span 2; } .event.full { grid-column: 1 / -1; } }
+    @media (max-width: 640px) { .events { grid-template-columns: 1fr; } .event.wide, .event.full { grid-column: auto; } .event.wide .ev-title { font-size: 36px; } .event { min-height: 0; padding: 24px 22px 22px; } .ev-year { font-size: 110px; } }
 
+    /* Upcoming event */
+    .announce { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 22px; padding: 6px 16px 6px 6px; border-radius: 999px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.22); color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; backdrop-filter: blur(8px); transition: background .2s; }
+    .announce:hover { background: rgba(255,255,255,.18); color: #fff; }
+    .announce b { background: #ff6b0a; color: #fff; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; letter-spacing: .04em; text-transform: uppercase; }
     /* Founder */
     .team-card { display: grid; grid-template-columns: 180px 1fr; gap: 40px; align-items: center; max-width: 920px; background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 36px 40px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
     .team-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: linear-gradient(180deg, var(--navy), var(--sky)); }
@@ -319,6 +331,7 @@
   <main id="top">
     <section class="hero">
       <div class="wrap">
+        <a class="announce" href="https://luma.com/4p27pped" target="_blank" rel="noopener"><b>New</b>AI in Academia Workshop @ Caltech · Nov 21 · Register →</a><br>
         <span class="eyebrow">Academia-Industry X · Since 2024</span>
         <h1>Where <em>academia</em> and <em>industry</em> meet to move AI forward.</h1>
         <p class="lead">AIX hosts AI events and supports workshops that connect researchers, students and industry practitioners — driving collaboration, open communication and the next generation of AI talent.</p>
@@ -452,6 +465,13 @@
           <p>Since 2024, AIX has partnered with leading AI workshops and research communities across computer vision, embodied AI and NLP.</p>
         </div>
         <div class="events">
+          <article class="event ev-caltech full reveal" id="upcoming">
+            <span class="ev-year" aria-hidden="true">2026</span>
+            <div class="ev-top"><span class="chip hot">Upcoming · Registration open</span><span class="chip role">AIX · Supporter</span><span class="chip">Nov 21, 2026</span><span class="chip">Caltech, Pasadena</span></div>
+            <h3 class="ev-title">AI in Academia <span>@ Caltech 2026</span></h3>
+            <p class="ev-full">How We Use AI in Research — a small-group workshop with student talks, posters and an academia × industry panel. Hosted by Caltech C (Caltech Chinese Association).</p>
+            <div class="ev-foot split"><span class="ev-note"><b>Abstracts due Nov 7</b> · Open to PhD students &amp; postdocs in Southern California</span><a class="ev-link solid" href="https://luma.com/4p27pped" target="_blank" rel="noopener">Register on Luma <span aria-hidden="true">→</span></a></div>
+          </article>
           <article class="event ev-cvpr wide reveal">
             <span class="ev-year" aria-hidden="true">2026</span>
             <div class="ev-top"><span class="chip role">AIX · Sponsor</span><span class="chip">June 4, 2026</span><span class="chip">Denver, CO</span></div>
