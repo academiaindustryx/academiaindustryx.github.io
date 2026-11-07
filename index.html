@@ -123,7 +123,7 @@
     .featured .section-head p { color: rgba(255,255,255,.75); }
     .featured .eyebrow { color: #8cc6f7; }
     .luminaries { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-    .lum { flex: 0 0 calc((100% - 80px) / 5); }
+    .lum { flex: 0 0 calc((100% - 100px) / 6); }
     .lum { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius); padding: 24px 16px 20px; text-align: center; transition: background .2s, transform .2s; }
     .lum:hover { background: rgba(255,255,255,.1); transform: translateY(-4px); }
     .lum img { width: 104px; height: 104px; border-radius: 50%; object-fit: cover; margin: 0 auto 14px; box-shadow: 0 0 0 3px rgba(140,198,247,.55); }
@@ -178,6 +178,7 @@
     .ev-texas { --c1: #3b140a; --c2: #c25a0a; --glow: rgba(255,190,110,.5); --accent: #ffd6a3; }
     .ev-socal { --c1: #062f45; --c2: #138aa8; --glow: rgba(110,235,240,.45); --accent: #b4f3f5; }
     .event.full { grid-column: 1 / -1; min-height: 0; }
+    .ev-verify { --c1: #2a0a2c; --c2: #a8237a; --glow: rgba(255,140,210,.5); --accent: #ffc4e6; }
     .ev-caltech { --c1: #1a0e06; --c2: #d9560a; --glow: rgba(255,150,60,.6); --accent: #ffc18a; }
     .chip.hot { background: #ff6b0a; border-color: #ff6b0a; color: #fff; }
     .ev-link.solid { background: #fff; color: #b8470a; border-color: #fff; }
@@ -399,7 +400,7 @@
         <div class="section-head reveal">
           <span class="eyebrow">Our workshop community</span>
           <h2>Alongside leading voices in AI</h2>
-          <p>The workshops and symposia AIX has supported have brought together invited speakers and organizers from Stanford, UT Austin, UIUC, UCLA, NYU, Northwestern and beyond.</p>
+          <p>The workshops and symposia AIX has supported have brought together invited speakers and organizers from Stanford, UC Berkeley, UT Austin, UIUC, UCLA, NYU, Northwestern and beyond.</p>
         </div>
         <div class="luminaries">
           <div class="lum reveal">
@@ -408,9 +409,9 @@
             <ul><li><b>Steering Committee</b>FMEA @ CVPR 2026</li><li><b>Organizing Committee</b>EAI @ NeurIPS 2025</li></ul>
           </div>
           <div class="lum reveal">
-            <img src="static/featured/jiajun-wu.png" alt="Jiajun Wu" loading="lazy">
-            <strong>Jiajun Wu</strong><span class="org">Stanford University</span>
-            <ul><li><b>Steering Committee</b>FMEA @ CVPR 2026</li><li><b>Organizing Committee</b>EAI @ NeurIPS 2025</li></ul>
+            <img src="static/featured/va-ion-stoica.jpg" alt="Ion Stoica" loading="lazy">
+            <strong>Ion Stoica</strong><span class="org">UC Berkeley</span>
+            <ul><li><b>Invited Speaker</b>Verify Agents @ NeurIPS 2026</li></ul>
           </div>
           <div class="lum reveal">
             <img src="static/featured/yejin-choi.png" alt="Yejin Choi" loading="lazy">
@@ -428,9 +429,9 @@
             <ul><li><b>Invited Speaker</b>FMEA @ CVPR 2026</li></ul>
           </div>
           <div class="lum reveal">
-            <img src="static/featured/xudong-wang.png" alt="Xudong Wang" loading="lazy">
-            <strong>Xudong Wang</strong><span class="org">Physical Intelligence</span>
-            <ul><li><b>Invited Speaker</b>FMEA @ CVPR 2026</li></ul>
+            <img src="static/featured/jiajun-wu.png" alt="Jiajun Wu" loading="lazy">
+            <strong>Jiajun Wu</strong><span class="org">Stanford University</span>
+            <ul><li><b>Steering Committee</b>FMEA @ CVPR 2026</li><li><b>Organizing Committee</b>EAI @ NeurIPS 2025</li></ul>
           </div>
           <div class="lum reveal">
             <img src="static/featured/heng-ji.jpg" alt="Heng Ji" loading="lazy">
@@ -452,6 +453,11 @@
             <strong>Manling Li</strong><span class="org">Northwestern University</span>
             <ul><li><b>Organizer</b>FMEA @ CVPR 2026</li><li><b>Organizer</b>EAI @ NeurIPS 2025</li></ul>
           </div>
+          <div class="lum reveal">
+            <img src="static/featured/xudong-wang.png" alt="Xudong Wang" loading="lazy">
+            <strong>Xudong Wang</strong><span class="org">Physical Intelligence</span>
+            <ul><li><b>Invited Speaker</b>FMEA @ CVPR 2026</li></ul>
+          </div>
         </div>
         <p class="featured-note">Roles refer to the respective workshops, as listed on their official websites.</p>
       </div>
@@ -462,7 +468,7 @@
         <div class="section-head reveal">
           <span class="eyebrow">Community activities</span>
           <h2>Workshops &amp; symposia we've supported</h2>
-          <p>Since 2024, AIX has partnered with leading AI workshops and research communities across computer vision, embodied AI and NLP.</p>
+          <p>Since 2024, AIX has partnered with leading AI workshops and research communities across computer vision, embodied AI, AI agents and NLP.</p>
         </div>
         <div class="events">
           <article class="event ev-caltech full reveal" id="upcoming">
@@ -472,17 +478,16 @@
             <p class="ev-full">How We Use AI in Research — a small-group workshop with student talks, posters and an academia × industry panel. Hosted by Caltech C (Caltech Chinese Association).</p>
             <div class="ev-foot split"><span class="ev-note"><b>Abstracts due Nov 7</b> · Open to PhD students &amp; postdocs in Southern California</span><a class="ev-link solid" href="https://luma.com/4p27pped" target="_blank" rel="noopener">Register on Luma <span aria-hidden="true">→</span></a></div>
           </article>
-          <article class="event ev-cvpr wide reveal">
+          <article class="event ev-verify wide reveal">
             <span class="ev-year" aria-hidden="true">2026</span>
-            <div class="ev-top"><span class="chip role">AIX · Sponsor</span><span class="chip">June 4, 2026</span><span class="chip">Denver, CO</span></div>
-            <h3 class="ev-title">FMEA <span>@ CVPR 2026</span></h3>
-            <p class="ev-full">Foundation Models Meet Embodied Agents — CVPR 2026 Workshop</p>
+            <div class="ev-top"><span class="chip hot">Upcoming</span><span class="chip role">AIX · Platinum sponsor</span><span class="chip">Dec 12, 2026</span><span class="chip">Sydney, Australia</span></div>
+            <h3 class="ev-title">Who Verifies the Agents? <span>@ NeurIPS 2026</span></h3>
+            <p class="ev-full">Toward Reliable Agent Development — NeurIPS 2026 Workshop</p>
             <div class="ev-people">
-              <div class="avatars"><img src="static/featured/kristen-grauman.jpg" alt="Kristen Grauman" title="Kristen Grauman" loading="lazy"><img src="static/featured/weichiu-ma.png" alt="Wei-Chiu Ma" title="Wei-Chiu Ma" loading="lazy"><img src="static/featured/xudong-wang.png" alt="Xudong Wang" title="Xudong Wang" loading="lazy"><img src="static/featured/kaichun-mo.jpg" alt="Kaichun Mo" title="Kaichun Mo" loading="lazy"><img src="static/featured/anchieh-cheng.png" alt="An-Chieh Cheng" title="An-Chieh Cheng" loading="lazy"><img src="static/featured/feifei-li.png" alt="Li Fei-Fei" title="Li Fei-Fei" loading="lazy"><img src="static/featured/jiajun-wu.png" alt="Jiajun Wu" title="Jiajun Wu" loading="lazy"><img src="static/featured/yejin-choi.png" alt="Yejin Choi" title="Yejin Choi" loading="lazy"><img src="static/featured/yonatan-bisk.png" alt="Yonatan Bisk" title="Yonatan Bisk" loading="lazy"></div>
-              <p class="ev-group"><b>Invited speakers</b>Kristen Grauman, Wei-Chiu Ma, Xudong Wang, Kaichun Mo, An-Chieh Cheng</p>
-              <p class="ev-group"><b>Steering committee</b>Li Fei-Fei, Jiajun Wu, Yejin Choi, Yonatan Bisk</p>
+              <div class="avatars"><img src="static/featured/va-ion-stoica.jpg" alt="Ion Stoica" title="Ion Stoica" loading="lazy"><img src="static/featured/va-azalia-mirhoseini.jpg" alt="Azalia Mirhoseini" title="Azalia Mirhoseini" loading="lazy"><img src="static/featured/va-yu-su.jpg" alt="Yu Su" title="Yu Su" loading="lazy"><img src="static/featured/va-pin-yu-chen.jpg" alt="Pin-Yu Chen" title="Pin-Yu Chen" loading="lazy"><img src="static/featured/va-seshendra-nalla.jpg" alt="Seshendra Nalla" title="Seshendra Nalla" loading="lazy"><img src="static/featured/va-dhaval-patel.jpg" alt="Dhaval Patel" title="Dhaval Patel" loading="lazy"><img src="static/featured/va-mohsen-lesani.jpg" alt="Mohsen Lesani" title="Mohsen Lesani" loading="lazy"></div>
+              <p class="ev-group"><b>Invited speakers</b>Ion Stoica (UC Berkeley), Azalia Mirhoseini (Stanford), Yu Su (Ohio State), Pin-Yu Chen (IBM Research), Seshendra Nalla (Datadog), Dhaval Patel (IBM Research), Mohsen Lesani (UC Santa Cruz)</p>
             </div>
-            <div class="ev-foot"><a class="ev-link" href="https://foundation-models-meet-embodied-agents.github.io/cvpr2026/" target="_blank" rel="noopener">Visit website <span aria-hidden="true">→</span></a></div>
+            <div class="ev-foot"><a class="ev-link" href="https://verify-agents-workshop.github.io/" target="_blank" rel="noopener">Visit website <span aria-hidden="true">→</span></a></div>
           </article>
           <article class="event ev-neurips reveal">
             <span class="ev-year" aria-hidden="true">2025</span>
@@ -506,7 +511,19 @@
             </div>
             <div class="ev-foot"><a class="ev-link" href="https://texas-nlp.github.io/2026/index.html" target="_blank" rel="noopener">Visit website <span aria-hidden="true">→</span></a></div>
           </article>
-          <article class="event ev-socal wide reveal">
+          <article class="event ev-cvpr wide reveal">
+            <span class="ev-year" aria-hidden="true">2026</span>
+            <div class="ev-top"><span class="chip role">AIX · Sponsor</span><span class="chip">June 4, 2026</span><span class="chip">Denver, CO</span></div>
+            <h3 class="ev-title">FMEA <span>@ CVPR 2026</span></h3>
+            <p class="ev-full">Foundation Models Meet Embodied Agents — CVPR 2026 Workshop</p>
+            <div class="ev-people">
+              <div class="avatars"><img src="static/featured/kristen-grauman.jpg" alt="Kristen Grauman" title="Kristen Grauman" loading="lazy"><img src="static/featured/weichiu-ma.png" alt="Wei-Chiu Ma" title="Wei-Chiu Ma" loading="lazy"><img src="static/featured/xudong-wang.png" alt="Xudong Wang" title="Xudong Wang" loading="lazy"><img src="static/featured/kaichun-mo.jpg" alt="Kaichun Mo" title="Kaichun Mo" loading="lazy"><img src="static/featured/anchieh-cheng.png" alt="An-Chieh Cheng" title="An-Chieh Cheng" loading="lazy"><img src="static/featured/feifei-li.png" alt="Li Fei-Fei" title="Li Fei-Fei" loading="lazy"><img src="static/featured/jiajun-wu.png" alt="Jiajun Wu" title="Jiajun Wu" loading="lazy"><img src="static/featured/yejin-choi.png" alt="Yejin Choi" title="Yejin Choi" loading="lazy"><img src="static/featured/yonatan-bisk.png" alt="Yonatan Bisk" title="Yonatan Bisk" loading="lazy"></div>
+              <p class="ev-group"><b>Invited speakers</b>Kristen Grauman, Wei-Chiu Ma, Xudong Wang, Kaichun Mo, An-Chieh Cheng</p>
+              <p class="ev-group"><b>Steering committee</b>Li Fei-Fei, Jiajun Wu, Yejin Choi, Yonatan Bisk</p>
+            </div>
+            <div class="ev-foot"><a class="ev-link" href="https://foundation-models-meet-embodied-agents.github.io/cvpr2026/" target="_blank" rel="noopener">Visit website <span aria-hidden="true">→</span></a></div>
+          </article>
+          <article class="event ev-socal full reveal">
             <span class="ev-year" aria-hidden="true">2024</span>
             <div class="ev-top"><span class="chip role">AIX · Platinum sponsor</span><span class="chip">Nov 22, 2024</span><span class="chip">UC San Diego</span></div>
             <h3 class="ev-title">SoCal NLP <span>2024</span></h3>
